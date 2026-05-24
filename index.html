@@ -2,8 +2,25 @@
 <html lang="el" data-theme="dark">
 <head>
 <meta charset="UTF-8">
+<link rel="manifest" href="data:application/manifest+json,{\"name\":\"EurovisionFun\",\"short_name\":\"EurovisionFun\",\"start_url\":\"https://eurovisionfun.com/\",\"display\":\"standalone\",\"background_color\":\"#09000f\",\"theme_color\":\"#6c00ff\",\"icons\":[{\"src\":\"https://i.imgur.com/VQ6ZdoO.png\",\"sizes\":\"512x512\"}]}">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="EurovisionFun">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>EurovisionFun — Eurovision News | Music | Fun</title>
+<title id="pageTitle">EurovisionFun — Eurovision News | Music | Fun</title>
+<meta id="metaDesc" name="description" content="Το μεγαλύτερο ελληνόφωνο site για την Eurovision Song Contest.">
+<meta id="ogTitle" property="og:title" content="EurovisionFun">
+<meta id="ogDesc" property="og:description" content="Eurovision News | Music | Fun">
+<meta id="ogImage" property="og:image" content="">
+<meta id="ogUrl" property="og:url" content="https://eurovisionfun.com">
+<meta id="ogType" property="og:type" content="website">
+<meta property="og:site_name" content="EurovisionFun">
+<meta name="twitter:card" content="summary_large_image">
+<meta id="twTitle" name="twitter:title" content="EurovisionFun">
+<meta id="twDesc" name="twitter:description" content="Eurovision News | Music | Fun">
+<meta id="twImage" name="twitter:image" content="">
+<link id="canonicalUrl" rel="canonical" href="https://eurovisionfun.com">
+<script type="application/ld+json" id="jsonLd">{"@context":"https://schema.org","@type":"WebSite","name":"EurovisionFun","url":"https://eurovisionfun.com","description":"Το μεγαλύτερο ελληνόφωνο site για την Eurovision Song Contest."}</script>
 <meta name="description" content="Το μεγαλύτερο ελληνόφωνο site για την Eurovision Song Contest. Νέα, αποτελέσματα, μουσική και πολλά άλλα.">
 <meta property="og:title" content="EurovisionFun">
 <meta property="og:description" content="Eurovision News | Music | Fun">
@@ -159,15 +176,15 @@ body{background:var(--bg);color:var(--tx);transition:background .25s,color .25s}
    SLIDER
 ═══════════════════════════════════════════ */
 .slider-wrap{position:relative;border-bottom:1px solid var(--br)}
-.slider-stage{position:relative;height:420px;overflow:hidden;background:var(--card);cursor:pointer}
+.slider-stage{position:relative;height:460px;overflow:hidden;background:var(--card);cursor:pointer}
 .slide{position:absolute;inset:0;opacity:0;transition:opacity .65s ease;pointer-events:none}
 .slide.on{opacity:1;pointer-events:auto}
-.slide img{width:100%;height:100%;object-fit:cover}
+.slide img{width:100%;height:100%;object-fit:cover;object-position:center center}
 .slide-ph{width:100%;height:100%;background:linear-gradient(160deg,#18003a,#6c00ff 60%,#aa00cc)}
-.slide-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,0,12,.93) 0%,rgba(4,0,12,.45) 50%,rgba(4,0,12,.05) 100%);pointer-events:none}
-.slide-body{position:absolute;bottom:0;left:0;right:420px;padding:26px}
+.slide-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,0,12,.96) 0%,rgba(4,0,12,.7) 30%,rgba(4,0,12,.1) 60%,transparent 100%);pointer-events:none}
+.slide-body{position:absolute;bottom:0;left:0;right:400px;padding:20px 24px 22px}
 .slide-cat{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;background:var(--pk);color:#fff;padding:2px 8px;border-radius:2px;margin-bottom:9px}
-.slide-title{font-size:26px;font-weight:900;line-height:1.12;color:#fff;letter-spacing:-.02em;margin-bottom:9px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.slide-title{font-size:24px;font-weight:900;line-height:1.15;color:#fff;letter-spacing:-.02em;margin-bottom:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-shadow:0 2px 12px rgba(0,0,0,.8)}
 .slide-meta{font-size:11px;color:rgba(255,255,255,.45);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .slide-meta svg{width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:2;opacity:.5}
 /* Slider controls */
@@ -179,19 +196,19 @@ body{background:var(--bg);color:var(--tx);transition:background .25s,color .25s}
 .slide-arr:hover{background:var(--vi);border-color:var(--vi);transform:scale(1.08)}
 .slide-arr svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
 /* Slider side list */
-.slider-side{position:absolute;top:0;right:0;bottom:0;width:420px;border-left:1px solid var(--br);background:var(--card);display:flex;flex-direction:column;transition:background .25s}
+.slider-side{position:absolute;top:0;right:0;bottom:0;width:400px;border-left:1px solid var(--br);background:var(--card);display:flex;flex-direction:column;transition:background .25s;overflow:hidden}
 .slider-side-hd{padding:10px 14px 8px;font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--tx3);border-bottom:1px solid var(--br);flex-shrink:0}
 .slider-side-list{flex:1;overflow:hidden;display:flex;flex-direction:column}
-.slide-li{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-bottom:1px solid var(--br);cursor:pointer;transition:background .15s;flex:1;min-height:0}
+.slide-li{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-bottom:1px solid var(--br);cursor:pointer;transition:background .15s;flex:1;min-height:0;overflow:hidden}
 .slide-li:last-child{border-bottom:none}
 .slide-li:hover{background:var(--card2)}
 .slide-li:hover .slide-li-t{color:var(--pk)}
 .slide-li.on{background:var(--card2);border-left:2px solid var(--vi);padding-left:10px}
-.slide-li-img{width:62px;height:46px;object-fit:cover;border-radius:2px;flex-shrink:0}
+.slide-li-img{width:58px;height:43px;object-fit:cover;border-radius:2px;flex-shrink:0}
 .slide-li-ph{width:62px;height:46px;border-radius:2px;flex-shrink:0;background:var(--bg3)}
 .slide-li-cat{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--pk);margin-bottom:2px}
-.slide-li-t{font-size:12px;font-weight:700;line-height:1.3;color:var(--tx);transition:color .15s;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.slide-li-m{font-size:10px;color:var(--tx3);margin-top:3px;white-space:nowrap}
+.slide-li-t{font-size:12px;font-weight:700;line-height:1.3;color:var(--tx);transition:color .15s;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word}
+.slide-li-m{font-size:10px;color:var(--tx3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* ═══════════════════════════════════════════
    ROW OF 4
@@ -201,7 +218,7 @@ body{background:var(--bg);color:var(--tx);transition:background .25s,color .25s}
 .r4:last-child{border-right:none}
 .r4:hover{background:var(--card2)}
 .r4:hover .r4-t{color:var(--pk)}
-.r4-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:2px;margin-bottom:9px;transition:transform .35s}
+.r4-img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center 20%;border-radius:2px;margin-bottom:9px;transition:transform .35s}
 .r4:hover .r4-img{transform:scale(1.03)}
 .r4-img-ph{width:100%;aspect-ratio:16/9;border-radius:2px;margin-bottom:9px;background:var(--bg3)}
 .r4-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
@@ -261,7 +278,7 @@ body{background:var(--bg);color:var(--tx);transition:background .25s,color .25s}
 .cat-layout{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 /* Big featured card */
 .cat-big{position:relative;border-radius:3px;overflow:hidden;background:var(--card);cursor:pointer;min-height:200px}
-.cat-big img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.cat-big img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;transition:transform .5s ease}
 .cat-big:hover img{transform:scale(1.04)}
 .cat-big-ph{position:absolute;inset:0;background:linear-gradient(160deg,#18003a,#6c00ff)}
 .cat-big-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,0,12,.9) 0%,rgba(4,0,12,.2) 60%,transparent 100%)}
@@ -646,20 +663,22 @@ body{background:var(--bg);color:var(--tx);transition:background .25s,color .25s}
 /* ── CUSTOM FEED ── */
 .custom-feed-bar{
   background:var(--bg2);border-bottom:1px solid var(--br);
-  padding:0 20px;transition:background .25s;
+  transition:background .25s;overflow:hidden;
+  /* same full-width as social strip */
 }
 .custom-feed-inner{
   max-width:var(--W);margin:0 auto;
-  display:flex;align-items:center;gap:0;min-width:max-content;
+  display:flex;align-items:center;gap:0;
+  padding:0 20px;
 }
 .cf-label{
   font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--tx3);padding:0 14px 0 0;margin-right:4px;
+  color:var(--tx3);padding:0 12px 0 0;margin-right:4px;
   border-right:1px solid var(--br2);flex-shrink:0;height:40px;
   display:flex;align-items:center;gap:6px;white-space:nowrap;
 }
 .cf-label svg{width:11px;height:11px;fill:none;stroke:var(--pk);stroke-width:2;stroke-linecap:round}
-.cf-tabs{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;flex:1}
+.cf-tabs{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
 .cf-tabs::-webkit-scrollbar{display:none}
 .cf-tab{
   display:flex;align-items:center;gap:6px;padding:0 12px;height:40px;
@@ -683,16 +702,21 @@ body{background:var(--bg);color:var(--tx);transition:background .25s,color .25s}
   display:flex;align-items:center;gap:5px;padding:0 12px;height:40px;
   font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
   color:var(--vi);cursor:pointer;white-space:nowrap;flex-shrink:0;
-  background:none;border:none;transition:color .15s;border-left:1px solid var(--br2);
+  background:var(--bg2);border:none;transition:color .15s;
+  border-left:1px solid var(--br2);
+  position:sticky;right:0;z-index:2;
 }
 .cf-add-btn:hover{color:var(--pk)}
 .cf-add-btn svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round}
 .cf-scroll-btn{
   display:none;align-items:center;justify-content:center;
-  width:28px;height:28px;border-radius:50%;flex-shrink:0;
-  background:var(--card2);border:1px solid var(--br2);
-  color:var(--tx2);cursor:pointer;transition:all .18s;margin:0 2px;
+  width:26px;height:26px;border-radius:50%;flex-shrink:0;
+  background:var(--bg2);border:1px solid var(--br2);
+  color:var(--tx2);cursor:pointer;transition:all .18s;
+  position:sticky;z-index:2;
 }
+#cfScrollL{left:0;border-right:1px solid var(--br2)}
+#cfScrollR{right:0;border-left:1px solid var(--br2)}
 .cf-scroll-btn:hover{background:var(--vi);border-color:var(--vi);color:#fff}
 
 /* Country picker — inline dropdown panel */
@@ -742,6 +766,222 @@ body{background:var(--bg);color:var(--tx);transition:background .25s,color .25s}
   .cf-label{display:none}
 }
 
+
+/* ── SEARCH OVERLAY ── */
+.search-overlay{
+  position:fixed;inset:0;z-index:600;
+  background:rgba(9,0,15,.95);
+  display:flex;flex-direction:column;
+  opacity:0;pointer-events:none;
+  transition:opacity .25s;
+}
+.search-overlay.open{opacity:1;pointer-events:auto}
+.search-overlay-hd{
+  display:flex;align-items:center;gap:12px;
+  padding:20px 24px;border-bottom:1px solid var(--br);
+  flex-shrink:0;
+}
+.search-big-inp{
+  flex:1;background:transparent;border:none;outline:none;
+  font-size:22px;font-weight:600;color:var(--tx);
+  font-family:'Inter',sans-serif;
+}
+.search-big-inp::placeholder{color:var(--tx3)}
+.search-close-btn{
+  width:36px;height:36px;border-radius:50%;border:1px solid var(--br2);
+  background:none;color:var(--tx2);cursor:pointer;display:flex;
+  align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;
+}
+.search-close-btn:hover{border-color:var(--pk);color:var(--pk)}
+.search-hint{
+  font-size:11px;font-weight:500;color:var(--tx3);
+  padding:8px 24px;border-bottom:1px solid var(--br);flex-shrink:0;
+}
+.search-results{flex:1;overflow-y:auto;padding:12px 24px}
+.search-result{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:12px 0;border-bottom:1px solid var(--br);cursor:pointer;
+  transition:background .15s;border-radius:3px;
+}
+.search-result:last-child{border-bottom:none}
+.search-result:hover .sr-t{color:var(--pk)}
+.sr-img{width:72px;height:52px;object-fit:cover;border-radius:2px;flex-shrink:0;background:var(--bg3)}
+.sr-body{flex:1;min-width:0}
+.sr-cat{font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--pk);margin-bottom:3px}
+.sr-t{font-size:14px;font-weight:700;line-height:1.3;color:var(--tx);transition:color .15s;margin-bottom:4px}
+.sr-m{font-size:11px;color:var(--tx3)}
+.sr-highlight{background:rgba(255,3,255,.2);color:var(--pk);border-radius:2px;padding:0 2px}
+.search-empty{padding:40px 0;text-align:center;color:var(--tx3);font-size:13px}
+.search-empty strong{color:var(--tx);display:block;font-size:16px;margin-bottom:6px}
+.search-loading{padding:30px 0;text-align:center;color:var(--tx3);font-size:13px;display:flex;align-items:center;justify-content:center;gap:8px}
+.search-count{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tx3);padding:8px 0;margin-bottom:4px}
+/* Keyboard hint */
+.search-big-inp::-webkit-search-cancel-button{display:none}
+.search-big-inp::-webkit-search-decoration{display:none}
+.search-overlay-hd .kbd{
+  font-size:10px;font-weight:700;background:var(--bg3);border:1px solid var(--br2);
+  padding:2px 6px;border-radius:3px;color:var(--tx3);white-space:nowrap;flex-shrink:0;
+}
+
+/* ── READING PROGRESS BAR ── */
+.reading-progress{
+  position:fixed;top:0;left:0;z-index:500;
+  height:3px;width:0%;
+  background:linear-gradient(90deg,var(--vi),var(--pk));
+  transition:width .1s linear;
+  pointer-events:none;
+  opacity:0;
+  border-radius:0 2px 2px 0;
+}
+.reading-progress.visible{opacity:1}
+
+/* ── BACK TO TOP ── */
+.back-to-top{
+  position:fixed;bottom:80px;right:24px;z-index:200;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--vi);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:translateY(10px);
+  transition:all .25s;pointer-events:none;
+  box-shadow:0 4px 14px rgba(108,0,255,.35);
+}
+.back-to-top.visible{opacity:1;transform:none;pointer-events:auto}
+.back-to-top:hover{background:var(--pk);transform:translateY(-2px)}
+.back-to-top svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round}
+
+/* ── URL HASH HIGHLIGHT ── */
+.art-page:target{scroll-margin-top:70px}
+
+@media(max-width:600px){
+  .search-big-inp{font-size:17px}
+  .search-overlay-hd{padding:14px}
+  .search-results{padding:8px 14px}
+  .back-to-top{bottom:20px;right:14px}
+}
+
+
+/* ── COOKIE CONSENT ── */
+.cookie-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:800;
+  background:var(--bg2);border-top:1px solid var(--br2);
+  padding:14px 20px;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  box-shadow:0 -4px 24px rgba(0,0,0,.3);
+  transform:translateY(100%);
+  transition:transform .35s ease;
+}
+.cookie-bar.visible{transform:none}
+.cookie-txt{font-size:12px;color:var(--tx2);line-height:1.6;flex:1;min-width:200px}
+.cookie-txt a{color:var(--vi);text-decoration:underline}
+.cookie-btns{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap}
+.cookie-accept{background:var(--vi);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:8px 18px;border-radius:3px;border:none;cursor:pointer;transition:background .15s}
+.cookie-accept:hover{background:var(--pk)}
+.cookie-decline{background:none;color:var(--tx3);font-size:11px;font-weight:600;padding:8px 14px;border:1px solid var(--br2);border-radius:3px;cursor:pointer;transition:all .15s}
+.cookie-decline:hover{color:var(--tx);border-color:var(--tx)}
+@media(max-width:600px){.cookie-bar{padding:12px 14px;gap:10px}}
+
+
+/* ── AD SLOTS ── */
+.ad-slot{
+  width:100%;background:var(--bg3);border:1px dashed var(--br2);
+  border-radius:3px;display:flex;align-items:center;justify-content:center;
+  color:var(--tx3);font-size:10px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;overflow:hidden;position:relative;
+}
+.ad-slot-leaderboard{height:90px;margin:12px 0}
+.ad-slot-rectangle{width:300px;height:250px;flex-shrink:0}
+.ad-slot-inline{height:250px;margin:20px 0}
+/* Hide ad placeholders — replace with real AdSense code */
+.ad-slot::after{content:'AD'}
+@media(max-width:600px){
+  .ad-slot-leaderboard{height:60px}
+  .ad-slot-rectangle{width:100%;height:120px}
+}
+
+
+/* ── TAG PAGE ── */
+.tag-page{display:none;padding:22px 0 52px}
+.tag-hero{background:var(--card);border:1px solid var(--br);border-radius:4px;padding:22px 24px;margin-bottom:22px;display:flex;align-items:center;gap:16px}
+.tag-hero-icon{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--vi),var(--pk));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tag-hero-icon svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round}
+.tag-hero-name{font-size:22px;font-weight:900;color:var(--tx);letter-spacing:-.01em}
+.tag-hero-count{font-size:12px;color:var(--tx3);margin-top:3px}
+.tag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tag-card{background:var(--card);border:1px solid var(--br);border-radius:3px;overflow:hidden;cursor:pointer;transition:all .2s}
+.tag-card:hover{border-color:var(--vi);transform:translateY(-2px);box-shadow:0 6px 20px rgba(108,0,255,.12)}
+.tag-card:hover .tag-card-t{color:var(--pk)}
+.tag-card-img{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--bg3)}
+.tag-card-body{padding:12px}
+.tag-card-meta{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--pk);margin-bottom:6px}
+.tag-card-t{font-size:14px;font-weight:700;line-height:1.3;color:var(--tx);transition:color .15s;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tag-card-date{font-size:10.5px;color:var(--tx3);margin-top:6px}
+.tag-empty{grid-column:1/-1;padding:40px;text-align:center;color:var(--tx3);font-size:13px}
+
+/* ── TRENDING SECTION ── */
+.trending-sec{margin-bottom:22px}
+.trending-list{display:flex;flex-direction:column;gap:0}
+.trending-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--br);cursor:pointer;transition:background .15s}
+.trending-item:last-child{border-bottom:none}
+.trending-item:hover .trending-t{color:var(--pk)}
+.trending-rank{font-size:20px;font-weight:900;color:var(--br2);min-width:28px;flex-shrink:0;line-height:1;transition:color .15s}
+.trending-item:hover .trending-rank{color:var(--pk)}
+.trending-img{width:72px;height:52px;object-fit:cover;border-radius:2px;flex-shrink:0;background:var(--bg3)}
+.trending-body{flex:1;min-width:0}
+.trending-t{font-size:13px;font-weight:700;line-height:1.3;color:var(--tx);transition:color .15s;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.trending-m{font-size:10px;color:var(--tx3);margin-top:3px;display:flex;align-items:center;gap:6px}
+.trending-m svg{width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:2}
+.trending-fire{font-size:9px;font-weight:700;background:rgba(255,3,255,.12);color:var(--pk);padding:1px 6px;border-radius:10px;margin-left:auto;flex-shrink:0}
+
+/* ── ARCHIVE PAGE ── */
+.archive-page{display:none;padding:22px 0 52px}
+.archive-years{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.archive-year-btn{padding:8px 16px;border:1px solid var(--br2);border-radius:3px;background:var(--card);font-size:12px;font-weight:700;color:var(--tx2);cursor:pointer;transition:all .18s}
+.archive-year-btn:hover,.archive-year-btn.on{background:var(--vi);border-color:var(--vi);color:#fff}
+.archive-month{margin-bottom:22px}
+.archive-month-title{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tx3);padding-bottom:7px;border-bottom:1px solid var(--br);margin-bottom:10px}
+.archive-list{display:flex;flex-direction:column;gap:0}
+.archive-item{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--br);cursor:pointer}
+.archive-item:last-child{border-bottom:none}
+.archive-item:hover .archive-t{color:var(--pk)}
+.archive-img{width:60px;height:44px;object-fit:cover;border-radius:2px;flex-shrink:0;background:var(--bg3)}
+.archive-t{font-size:13px;font-weight:700;line-height:1.3;color:var(--tx);transition:color .15s}
+.archive-d{font-size:10px;color:var(--tx3);margin-top:3px}
+.archive-loading{padding:30px;text-align:center;color:var(--tx3);font-size:13px}
+
+/* ── RELATED ARTICLES — smarter ── */
+.rel-cat-badge{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--pk);margin-bottom:4px;display:flex;align-items:center;gap:4px}
+
+/* ── PWA INSTALL BANNER ── */
+.pwa-banner{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+  z-index:700;background:var(--bg2);border:1px solid var(--br2);
+  border-radius:12px;box-shadow:0 8px 32px var(--shadow);
+  padding:14px 18px;display:flex;align-items:center;gap:12px;
+  width:calc(100% - 28px);max-width:380px;
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s;
+  opacity:0;pointer-events:none;
+}
+.pwa-banner.show{transform:translateX(-50%) translateY(0);opacity:1;pointer-events:auto}
+.pwa-icon{width:44px;height:44px;border-radius:10px;flex-shrink:0;object-fit:cover;background:linear-gradient(135deg,var(--vi),var(--pk))}
+.pwa-text{flex:1;min-width:0}
+.pwa-title{font-size:13px;font-weight:800;color:var(--tx);margin-bottom:2px}
+.pwa-sub{font-size:11px;color:var(--tx3)}
+.pwa-add-btn{background:var(--vi);color:#fff;font-size:11px;font-weight:700;padding:8px 14px;border-radius:8px;border:none;cursor:pointer;white-space:nowrap;transition:background .15s;flex-shrink:0}
+.pwa-add-btn:hover{background:var(--pk)}
+.pwa-close{background:none;border:none;cursor:pointer;color:var(--tx3);padding:4px;font-size:16px;flex-shrink:0;transition:color .15s}
+.pwa-close:hover{color:var(--tx)}
+/* Only show on mobile */
+@media(min-width:768px){.pwa-banner{display:none}}
+
+@media(max-width:960px){
+  .tag-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .tag-grid{grid-template-columns:1fr}
+  .archive-years{gap:4px}
+  .archive-year-btn{padding:6px 12px;font-size:11px}
+}
+
 </style>
 </head>
 <body>
@@ -759,6 +999,41 @@ body{background:var(--bg);color:var(--tx);transition:background .25s,color .25s}
   <button class="toast-dismiss" onclick="hideToast()">Παράβλεψε</button>
  </div>
 </div>
+
+
+
+<!-- COOKIE CONSENT -->
+<div class="cookie-bar" id="cookieBar">
+ <div class="cookie-txt">
+  🍪 Χρησιμοποιούμε cookies για να βελτιώσουμε την εμπειρία σου. Συνεχίζοντας αποδέχεσαι την <a href="https://eurovisionfun.com/cookie-policy/" target="_blank">Cookie Policy</a> μας.
+ </div>
+ <div class="cookie-btns">
+  <button class="cookie-accept" onclick="cookieAccept()">Αποδοχή</button>
+  <button class="cookie-decline" onclick="cookieDecline()">Μόνο απαραίτητα</button>
+ </div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay">
+ <div class="search-overlay-hd">
+  <svg viewBox="0 0 24 24" fill="none" stroke="var(--tx3)" stroke-width="2" width="20" height="20" style="flex-shrink:0"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  <input class="search-big-inp" id="searchInp" type="text" placeholder="Αναζήτηση άρθρων…" autocomplete="off" oninput="srSearch(this.value)" onkeydown="srKey(event)">
+  <span class="kbd">ESC για κλείσιμο</span>
+  <button class="search-close-btn" onclick="srClose()">
+   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="14" height="14"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+ </div>
+ <div class="search-hint" id="searchHint">Αναζήτηση στα άρθρα που έχουν φορτωθεί</div>
+ <div class="search-results" id="searchResults"></div>
+</div>
+
+<!-- READING PROGRESS BAR -->
+<div class="reading-progress" id="readingProgress"></div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Πάνω">
+ <svg viewBox="0 0 24 24"><polyline points="18,15 12,9 6,15"/></svg>
+</button>
 
 <!-- TOPBAR -->
 <div class="topbar"><div class="W">
@@ -799,6 +1074,7 @@ body{background:var(--bg);color:var(--tx);transition:background .25s,color .25s}
   </div>
   <a class="on" href="#" onclick="showSection('home');return false" id="navNea">Νέα</a>
   <a href="#" onclick="showSection('cal');return false">Ημερολόγιο</a>
+  <a href="#" onclick="showArchive();return false">Αρχείο</a>
   <a href="#" onclick="showSection('about');return false">Εμείς</a>
  </nav>
  <div class="h-ctrl">
@@ -807,7 +1083,7 @@ body{background:var(--bg);color:var(--tx);transition:background .25s,color .25s}
   </button>
   <div class="h-search">
    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" style="position:absolute;left:9px;top:50%;transform:translateY(-50%);width:13px;height:13px;stroke:var(--tx3)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-   <input class="h-inp" type="search" placeholder="Αναζήτηση…">
+   <input class="h-inp" type="search" placeholder="Αναζήτηση…" readonly onclick="srOpen()" style="cursor:pointer">
   </div>
   <button class="icon-btn hamburger" id="hamburgerBtn" onclick="openDrawer()" aria-label="Μενού">
    <span></span><span></span><span></span>
@@ -827,7 +1103,7 @@ body{background:var(--bg);color:var(--tx);transition:background .25s,color .25s}
   <div class="drawer-section-title">Χώρες</div>
   <div class="drawer-country-grid" id="drawerGrid"></div>
   <div class="drawer-link" onclick="toggleTheme();closeDrawer()"><svg id="drawerThemeIco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><span id="drawerThemeTxt">Light Mode</span></div>
-  <div style="padding:14px 20px"><div style="position:relative"><svg style="position:absolute;left:9px;top:50%;transform:translateY(-50%);width:13px;height:13px;fill:none;stroke:var(--tx3);stroke-width:2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input style="width:100%;background:var(--card2);border:1px solid var(--br2);border-radius:18px;padding:8px 12px 8px 30px;font-size:13px;color:var(--tx);outline:none;font-family:inherit" type="search" placeholder="Αναζήτηση…"></div></div>
+  <div style="padding:14px 20px"><div style="position:relative"><svg style="position:absolute;left:9px;top:50%;transform:translateY(-50%);width:13px;height:13px;fill:none;stroke:var(--tx3);stroke-width:2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input style="width:100%;background:var(--card2);border:1px solid var(--br2);border-radius:18px;padding:8px 12px 8px 30px;font-size:13px;color:var(--tx);outline:none;font-family:inherit;cursor:pointer" type="search" placeholder="Αναζήτηση…" readonly onclick="closeDrawer();srOpen()"></div></div>
  </div>
 </div>
 
@@ -870,11 +1146,11 @@ body{background:var(--bg);color:var(--tx);transition:background .25s,color .25s}
    <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
    MY FEED
   </div>
-  <button class="cf-scroll-btn" id="cfScrollL" onclick="scrollCFTabs(-1)">
+  <button class="cf-scroll-btn" id="cfScrollL" onclick="cfScroll(-1)">
    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="13" height="13"><polyline points="15,18 9,12 15,6"/></svg>
   </button>
   <div class="cf-tabs" id="cfTabs"></div>
-  <button class="cf-scroll-btn" id="cfScrollR" onclick="scrollCFTabs(1)">
+  <button class="cf-scroll-btn" id="cfScrollR" onclick="cfScroll(1)">
    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="13" height="13"><polyline points="9,18 15,12 9,6"/></svg>
   </button>
   <button class="cf-add-btn" onclick="openCFModal()">
@@ -889,8 +1165,8 @@ body{background:var(--bg);color:var(--tx);transition:background .25s,color .25s}
   <div class="cf-picker-hd">
    <div class="cf-picker-title">Επίλεξε χώρες για το feed σου</div>
    <div class="cf-picker-actions">
-    <button class="cf-clear-btn" onclick="clearCFeed()">Καθαρισμός</button>
-    <button class="cf-save-btn" onclick="saveCFeed()">
+    <button class="cf-clear-btn" onclick="cfClearAll()">Καθαρισμός</button>
+    <button class="cf-save-btn" onclick="cfSaveAndClose()">
      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="11" height="11"><polyline points="20 6 9 17 4 12"/></svg>
      Αποθήκευση
     </button>
@@ -910,8 +1186,11 @@ body{background:var(--bg);color:var(--tx);transition:background .25s,color .25s}
   <!-- DYNAMIC CAT SECTIONS -->
   <div id="catSections"></div>
 
+  <!-- TRENDING THIS WEEK -->
+  <div id="trendingContainer"></div>
+
   <!-- SOCIAL STRIP -->
-  <div class="soc-strip" style="margin:0 -20px 20px;padding:11px 0">
+  <div class="soc-strip" style="margin:16px -20px 20px;padding:11px 0">
    <div class="W" style="padding:0 20px">
     <div class="soc-strip-inner">
      <span class="soc-lbl">Ακολούθησέ μας</span>
@@ -1087,6 +1366,57 @@ body{background:var(--bg);color:var(--tx);transition:background .25s,color .25s}
   <a class="about-soc-btn" href="https://youtube.com/@eurovisionfun_" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" width="14" height="14"><path d="M21.582 6.186a2.506 2.506 0 00-1.768-1.768C18.254 4 12 4 12 4s-6.254 0-7.814.418a2.506 2.506 0 00-1.768 1.768C2 7.746 2 12 2 12s0 4.254.418 5.814a2.506 2.506 0 001.768 1.768C5.746 20 12 20 12 20s6.254 0 7.814-.418a2.506 2.506 0 001.768-1.768C22 16.254 22 12 22 12s0-4.254-.418-5.814z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98" fill="var(--bg)"/></svg>YouTube</a>
  </div>
 </div></div>
+
+
+<!-- TAG PAGE -->
+<div id="tagPage" class="tag-page">
+ <div class="W">
+  <button class="art-back" onclick="history.back()">
+   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" width="14" height="14"><polyline points="19,12 5,12"/><polyline points="11,6 5,12 11,18"/></svg>
+   Πίσω
+  </button>
+  <div class="tag-hero">
+   <div class="tag-hero-icon"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+   <div>
+    <div class="tag-hero-name" id="tagName">Tag</div>
+    <div class="tag-hero-count" id="tagCount"></div>
+   </div>
+  </div>
+  <div class="tag-grid" id="tagGrid">
+   <div class="sk" style="height:200px;border-radius:3px"></div>
+   <div class="sk" style="height:200px;border-radius:3px"></div>
+   <div class="sk" style="height:200px;border-radius:3px"></div>
+  </div>
+ </div>
+</div>
+
+<!-- ARCHIVE PAGE -->
+<div id="archivePage" class="archive-page">
+ <div class="W">
+  <button class="art-back" onclick="showSection('home')">
+   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" width="14" height="14"><polyline points="19,12 5,12"/><polyline points="11,6 5,12 11,18"/></svg>
+   Πίσω
+  </button>
+  <div class="sec-hd" style="margin-bottom:20px">
+   <span class="sec-hd-num">—</span>
+   <span class="sec-hd-title">Αρχείο Άρθρων</span>
+  </div>
+  <div class="archive-years" id="archiveYears"></div>
+  <div id="archiveContent"><div class="archive-loading">Επιλέξτε χρονιά</div></div>
+ </div>
+</div>
+
+<!-- PWA INSTALL BANNER -->
+<div class="pwa-banner" id="pwaBanner">
+ <img class="pwa-icon" src="https://i.imgur.com/VQ6ZdoO.png" alt="EurovisionFun"
+      onerror="this.style.background='linear-gradient(135deg,var(--vi),var(--pk))'">
+ <div class="pwa-text">
+  <div class="pwa-title">EurovisionFun App</div>
+  <div class="pwa-sub">Πρόσθεσε στην αρχική οθόνη</div>
+ </div>
+ <button class="pwa-add-btn" onclick="pwaInstall()">Προσθήκη</button>
+ <button class="pwa-close" onclick="pwaDismiss()">✕</button>
+</div>
 
 <!-- FOOTER -->
 <footer class="footer"><div class="W">
@@ -1296,8 +1626,15 @@ function hideToast(){
 
 function catForPost(p){
   try{
-    const cats=p._embedded['wp:term'][0];
-    for(const c of cats){const m=ALL_COUNTRIES.find(a=>c.name&&c.name.toLowerCase().includes(a.kw));if(m)return m}
+    const terms=p._embedded['wp:term'][0];
+    if(!terms||!terms.length)return null;
+    for(const term of terms){
+      if(!term.name)continue;
+      const tn=term.name.toLowerCase().trim();
+      // Only match if WP category name IS a country name (exact)
+      const exact=ALL_COUNTRIES.find(a=>tn===a.name.toLowerCase());
+      if(exact)return exact;
+    }
   }catch(e){}
   return null;
 }
@@ -1402,8 +1739,11 @@ function buildSlider(posts){
     const slide=document.createElement('div');
     slide.className='slide'+(i===0?' on':'');
     slide.style.cursor='pointer';
+    const slideBg = img
+      ? `<div style="position:absolute;inset:0;background-image:url('${img}');background-size:cover;background-position:center center;pointer-events:none"></div>`
+      : '<div class="slide-ph" style="pointer-events:none"></div>';
     slide.innerHTML=`
-      ${img?`<img src="${img}" alt="" loading="${i===0?'eager':'lazy'}" style="pointer-events:none">`:'<div class="slide-ph" style="pointer-events:none"></div>'}
+      ${slideBg}
       <div class="slide-ov" style="pointer-events:none"></div>
       <div class="slide-body" style="pointer-events:none">
         <span class="slide-cat">${gc(p)}</span>
@@ -1412,9 +1752,7 @@ function buildSlider(posts){
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="10" height="10" style="opacity:.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>${au}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="10" height="10" style="opacity:.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>${fd(p.date)}
         </div>
-        <div style="display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.25);padding:5px 12px;border-radius:3px;backdrop-filter:blur(4px)">
-          Διάβασε περισσότερα →
-        </div>
+
       </div>`;
     slide.addEventListener('click', (e)=>{
       // Don't open if clicking nav arrows/dots
@@ -1429,6 +1767,8 @@ function buildSlider(posts){
   stage.appendChild(nav);
   document.getElementById('sliderSideList').innerHTML=slPosts.map((p,i)=>{const th=gi(p,'thumbnail');return`<div class="slide-li${i===0?' on':''}" id="sl-li-${i}" onclick="openPost(${p.id})">${th?`<img class="slide-li-img" src="${th}" alt="" loading="lazy">`:'<div class="slide-li-ph"></div>'}<div><div class="slide-li-cat">${gc(p)}</div><div class="slide-li-t">${dc(p.title.rendered)}</div><div class="slide-li-m">${fd(p.date)}</div></div></div>`}).join('');
   startSlider();
+  // Swipe on mobile
+  initSwipe(document.getElementById('sliderStage'), slNext, slPrev);
 }
 function goSlide(i){if(!slPosts.length)return;slIdx=i;document.querySelectorAll('.slide').forEach((s,j)=>s.classList.toggle('on',j===i));document.querySelectorAll('.slide-dot').forEach((d,j)=>d.classList.toggle('on',j===i));document.querySelectorAll('.slide-li').forEach((l,j)=>l.classList.toggle('on',j===i));resetSlider()}
 function slNext(){goSlide((slIdx+1)%slPosts.length)}
@@ -1457,6 +1797,7 @@ function analyzeCats(posts){
     const pos=idx<5?1.5:1;
     counts[cat.iso].score+=recency*pos;
   });
+  // Sort by score — all countries with any posts included
   dynCats=Object.values(counts).sort((a,b)=>b.score-a.score);
   return dynCats;
 }
@@ -1606,7 +1947,9 @@ async function openPost(id){
     currentPost=p;
     const an=au?.name||'EurovisionFun';
     const tm=getTeamMember(an);
-    document.getElementById('artCat').textContent=gc(p);
+    updateHash(p.id);
+  updateSEO(p);
+  document.getElementById('artCat').textContent=gc(p);
     document.getElementById('artTitle').textContent=dc(p.title.rendered);
     document.getElementById('artDate').textContent=fd(p.date);
     document.getElementById('artReadtime').textContent=rt(p.content.rendered);
@@ -1639,27 +1982,39 @@ async function openPost(id){
     body=body.replace(/<iframe[^>]*src="([^"]*)"[^>]*>[\s\S]*?<\/iframe>/gi,(m,src)=>`<div style="background:var(--card2);border:1px solid var(--br2);border-radius:3px;padding:12px 16px;margin:1.2em 0"><a href="${src}" target="_blank" style="font-size:13px;font-weight:700;color:var(--vi)">Άνοιγμα σε νέο παράθυρο →</a></div>`);
     body=body.replace(/<blockquote[^>]*instagram-media[^>]*>[\s\S]*?<\/blockquote>/gi,(m)=>{const u=m.match(/data-instgrm-permalink="([^"]+)"/);return`<div style="background:var(--card2);border:1px solid var(--br2);border-radius:3px;padding:14px 18px;margin:1.4em 0;display:flex;align-items:center;gap:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><a href="${u?u[1]:'https://instagram.com/eurovisionfn'}" target="_blank" style="font-size:13px;font-weight:700;color:var(--vi)">Δείτε στο Instagram →</a></div>`});
     document.getElementById('artBody').innerHTML=body;
-    try{const tags=p._embedded['wp:term'][1]||[];document.getElementById('artTags').innerHTML=tags.map(t=>`<span class="art-tag">${t.name}</span>`).join('')}catch(e){}
+    injectArticleAd(document.getElementById('artBody'));
+    try{const tags=p._embedded['wp:term'][1]||[];document.getElementById('artTags').innerHTML=tags.map(t=>`<span class="art-tag" onclick="openTag('${dc(t.name)}','${t.slug}')" style="cursor:pointer">${t.name}</span>`).join('')}catch(e){}
     // Related (6 articles)
-    document.getElementById('relGrid').innerHTML=allPosts.filter(x=>x.id!==id).slice(0,6).map(p=>{const img=gi(p,'medium_large')||gi(p,'medium');return`<div class="rel-c" onclick="openPost(${p.id})">${img?`<img class="rel-img" src="${img}" alt="" loading="lazy">`:'<div class="rel-ph"></div>'}<div class="rel-cat">${gc(p)}</div><div class="rel-t">${dc(p.title.rendered)}</div></div>`}).join('');
+    buildRelated(p);
     // Side latest
     document.getElementById('artSideList').innerHTML=allPosts.slice(0,5).map(p=>{const img=gi(p,'thumbnail');return`<div class="sb-item" onclick="openPost(${p.id})">${img?`<img class="sb-img" src="${img}" alt="" loading="lazy">`:'<div class="sb-ph"></div>'}<div><div class="sb-t">${dc(p.title.rendered)}</div><div class="sb-m">${fd(p.date)}</div></div></div>`}).join('');
   }catch(e){document.getElementById('artBody').innerHTML='<p style="color:var(--tx3);padding:20px 0">Σφάλμα φόρτωσης άρθρου.</p>'}
 }
 
-function shareArt(pl){const url=currentPost?.link||location.href;const ti=currentPost?dc(currentPost.title.rendered):'EurovisionFun';if(pl==='tw')window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(ti)}&url=${encodeURIComponent(url)}`,'_blank');else window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,'_blank')}
-function copyLink(){navigator.clipboard.writeText(currentPost?.link||location.href).catch(()=>{})}
+function shareArt(pl){
+  const url=currentPost?.link||location.href;
+  const ti=currentPost?dc(currentPost.title.rendered):'EurovisionFun';
+  if(pl==='tw') window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(ti)}&url=${encodeURIComponent(url)}`,'_blank');
+  else window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,'_blank');
+}
+function copyLink(){
+  const url = currentPost?.link||location.href;
+  navigator.clipboard.writeText(url).then(()=>{
+    showToast('Link αντιγράφηκε!');
+  }).catch(()=>{});
+}
 
 /* ═══════════════════════════════════════════
    PAGE ROUTING
 ═══════════════════════════════════════════ */
 function showSection(sec){
-  ['homePage','artPage','calPage','aboutPage'].forEach(id=>{
+  ['homePage','artPage','calPage','aboutPage','tagPage','archivePage'].forEach(id=>{
     const el=document.getElementById(id);if(el){el.style.display='none';el.style.opacity='1'}
   });
   const map={home:'homePage',art:'artPage',cal:'calPage',about:'aboutPage'};
   const el=document.getElementById(map[sec]||'homePage');
   if(el){el.style.display='block'}
+  if(sec==='home'){ if(history.replaceState) history.replaceState(null,'',location.pathname); resetSEO(); }
   window.scrollTo({top:0});
   if(sec==='cal')loadCalArticles();
   if(sec==='about')buildAboutTeam();
@@ -1709,7 +2064,8 @@ function loadCalArticles(){
 ═══════════════════════════════════════════ */
 async function checkNew(){
   try{
-    const r=await fetch('https://eurovisionfun.com/wp-json/wp/v2/posts?per_page=1&_embed');
+    // Cache-bust with timestamp
+    const r=await fetch('https://eurovisionfun.com/wp-json/wp/v2/posts?per_page=1&_embed&_='+Date.now());
     const posts=await r.json();
     if(!posts.length)return;
     const nid=posts[0].id;
@@ -1720,8 +2076,31 @@ async function checkNew(){
     latestId=nid;
   }catch(e){}
 }
+
+// Refresh when tab becomes visible again (user comes back to tab)
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='visible') checkNew();
+});
 async function fullRefresh(){
-  try{const r=await fetch('https://eurovisionfun.com/wp-json/wp/v2/posts?per_page=40&page=1&_embed');if(!r.ok)return;allPosts=await r.json();latestId=allPosts[0]?.id||latestId;buildTicker(allPosts);buildSlider(allPosts);buildRow4(allPosts);const cats=analyzeCats(allPosts);buildCatTabs(cats);buildCatSections(cats);pg=1;loaded=0;buildList(allPosts.slice(10,16));buildFlagGrid(cats)}catch(e){}
+  try{
+    const r=await fetch('https://eurovisionfun.com/wp-json/wp/v2/posts?per_page=100&page=1&_embed&_='+Date.now());
+    if(!r.ok)return;
+    allPosts=await r.json();
+    latestId=allPosts[0]?.id||latestId;
+    buildTicker(allPosts);
+    buildSlider(allPosts);
+    buildRow4(allPosts);
+    const cats=analyzeCats(allPosts);
+    buildCatTabs(cats);
+    cfLoad();
+    buildCFTabs();
+    buildCatSections(cats);
+    pg=1;loaded=0;
+    buildList(allPosts.slice(10,22));
+    buildFlagGrid(cats);
+    buildFacts(allPosts);
+    renderTrendingSection(document.getElementById('trendingContainer'));
+  }catch(e){}
 }
 
 /* ═══════════════════════════════════════════
@@ -1730,231 +2109,814 @@ async function fullRefresh(){
 (()=>{const d=['Κυριακή','Δευτέρα','Τρίτη','Τετάρτη','Πέμπτη','Παρασκευή','Σάββατο'],m=['Ιανουαρίου','Φεβρουαρίου','Μαρτίου','Απριλίου','Μαΐου','Ιουνίου','Ιουλίου','Αυγούστου','Σεπτεμβρίου','Οκτωβρίου','Νοεμβρίου','Δεκεμβρίου'];const n=new Date(),el=document.getElementById('sDate');if(el)el.textContent=d[n.getDay()]+', '+n.getDate()+' '+m[n.getMonth()]+' '+n.getFullYear()})();
 
 
+
+
 /* ═══════════════════════════════════════════
-   CUSTOM FEED — localStorage persisted
+   CUSTOM FEED — simple & reliable
+   Only uses already-loaded posts. No WP fetches.
 ═══════════════════════════════════════════ */
-const CF_KEY = 'ef_custom_feed_v1';
-let cfSelected = []; // array of iso codes
-let cfModalSelected = []; // temp selection in modal
+const CF_KEY = 'ef_feed';
+let cfSaved = [];
+let cfTemp  = [];
 
-function loadCFeed(){
-  try{ cfSelected = JSON.parse(localStorage.getItem(CF_KEY)) || []; }
-  catch(e){ cfSelected = []; }
-}
+function cfLoad(){ try{ cfSaved = JSON.parse(localStorage.getItem(CF_KEY)) || []; }catch(e){ cfSaved=[]; } }
+function cfSave(){ localStorage.setItem(CF_KEY, JSON.stringify(cfSaved)); }
 
-function saveCFeed(){
-  cfSelected = [...cfModalSelected];
-  localStorage.setItem(CF_KEY, JSON.stringify(cfSelected));
-  closeCFModal();
-  buildCFTabs();
-  // Show selected or all
-  if(cfSelected.length > 0){
-    showCFFilter(cfSelected[0]);
-  } else {
-    buildCatSections(dynCats);
-  }
-}
-
-function scrollCFTabs(dir){
-  const tabs = document.getElementById('cfTabs');
-  if(!tabs) return;
-  tabs.scrollBy({left: dir * 180, behavior:'smooth'});
-}
-
-function updateCFScrollBtns(){
-  const tabs = document.getElementById('cfTabs');
-  const lBtn = document.getElementById('cfScrollL');
-  const rBtn = document.getElementById('cfScrollR');
-  if(!tabs||!lBtn||!rBtn) return;
-  const hasOverflow = tabs.scrollWidth > tabs.clientWidth + 2;
-  const canScrollL = tabs.scrollLeft > 4;
-  const canScrollR = hasOverflow && tabs.scrollLeft < tabs.scrollWidth - tabs.clientWidth - 4;
-  lBtn.style.display = canScrollL ? 'flex' : 'none';
-  rBtn.style.display = (hasOverflow && canScrollR) ? 'flex' : 'none';
-  // Always show right arrow if there's overflow and not scrolled yet
-  if(hasOverflow && tabs.scrollLeft < 2) rBtn.style.display = 'flex';
-}
-
+/* Build tab bar */
 function buildCFTabs(){
-  const tabs = document.getElementById('cfTabs');
-  if(!tabs) return;
-  // "Όλα" tab
-  const allBtn = document.createElement('button');
-  allBtn.className = 'cf-tab on';
-  allBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Όλα`;
-  allBtn.onclick = () => { selCFTab(allBtn); buildCatSections(dynCats); scrollToFeed(); };
-  tabs.innerHTML = '';
-  tabs.appendChild(allBtn);
+  const wrap = document.getElementById('cfTabs');
+  if(!wrap) return;
+  wrap.innerHTML = '';
 
-  // Remove old scroll listener if any
-  tabs.onscroll = updateCFScrollBtns;
+  // ALL tab
+  const allTab = cfMakeTab(null);
+  allTab.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" style="flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>' + '<span style="margin-left:5px">Όλα</span>';
+  allTab.onclick = () => { cfSelect(allTab); buildCatSections(dynCats); pg=1; loaded=0; buildList(allPosts.slice(10,22)); };
+  wrap.appendChild(allTab);
+  allTab.classList.add('on');
 
-  if(cfSelected.length === 0){
-    // No custom feed — show top active countries from dynCats
-    dynCats.filter(d=>d.count>=1).slice(0,7).forEach(({cat}) => {
-      addCFTabItem(tabs, cat, false);
-    });
-  } else {
-    cfSelected.forEach(iso => {
-      const cat = ALL_COUNTRIES.find(c=>c.iso===iso);
-      if(cat) addCFTabItem(tabs, cat, true);
-    });
-  }
+  // Country tabs
+  const toShow = cfSaved.length > 0
+    ? cfSaved.map(iso => ALL_COUNTRIES.find(x => x.iso === iso)).filter(Boolean)
+    : dynCats.slice(0,6).map(d => d.cat);
+
+  toShow.forEach(cat => {
+    const tab = cfMakeTab(cat);
+    if(cfSaved.includes(cat.iso)){
+      // Removable on hover
+      const rmSpan = document.createElement('span');
+      rmSpan.textContent = '✕';
+      rmSpan.style.cssText = 'display:none;margin-left:5px;font-size:9px;color:var(--pk);font-weight:900;line-height:1';
+      rmSpan.onclick = e => {
+        e.stopPropagation();
+        cfSaved = cfSaved.filter(i => i !== cat.iso);
+        cfSave();
+        buildCFTabs();
+        cfSelect(document.querySelector('.cf-tab'));
+        buildCatSections(dynCats);
+      };
+      tab.appendChild(rmSpan);
+      tab.addEventListener('mouseenter', () => rmSpan.style.display = 'inline');
+      tab.addEventListener('mouseleave', () => rmSpan.style.display = 'none');
+    }
+    tab.onclick = e => {
+      if(e.target.textContent === '✕') return;
+      cfSelect(tab);
+      cfShowCountry(cat);
+    };
+    wrap.appendChild(tab);
+  });
+
+  setTimeout(cfUpdateArrows, 100);
+  setTimeout(cfUpdateArrows, 500);
+  wrap.onscroll = cfUpdateArrows;
 }
 
-function addCFTabItem(tabs, cat, removable){
+function cfMakeTab(cat){
   const btn = document.createElement('button');
   btn.className = 'cf-tab';
-  btn.dataset.iso = cat.iso;
-  btn.innerHTML = `<img src="${flag(cat.iso)}" alt="">${cat.name}${removable?`<button class="cf-remove" onclick="event.stopPropagation();removeCF('${cat.iso}')" title="Αφαίρεση">✕</button>`:''}`;
-  btn.onclick = async (e) => {
-    if(e.target.classList.contains('cf-remove')) return;
-    selCFTab(btn);
-    scrollToFeed();
-    await showCFFilter(cat.iso);
-  };
-  tabs.appendChild(btn);
+  if(cat){
+    btn.dataset.iso = cat.iso;
+    const img = document.createElement('img');
+    img.src = flag(cat.iso); img.alt = '';
+    img.style.cssText = 'width:18px;height:12px;border-radius:1px;object-fit:cover;flex-shrink:0;margin-right:5px';
+    btn.appendChild(img);
+    btn.appendChild(document.createTextNode(cat.name));
+  }
+  return btn;
 }
 
-function removeCF(iso){
-  cfSelected = cfSelected.filter(i=>i!==iso);
-  localStorage.setItem(CF_KEY, JSON.stringify(cfSelected));
-  buildCFTabs();
-  buildCatSections(dynCats);
+function cfSelect(el){
+  document.querySelectorAll('.cf-tab').forEach(t => t.classList.remove('on'));
+  if(el) el.classList.add('on');
 }
 
-function selCFTab(el){
-  document.querySelectorAll('.cf-tab').forEach(t=>t.classList.remove('on'));
-  el.classList.add('on');
+/* Arrows */
+function cfUpdateArrows(){
+  const wrap = document.getElementById('cfTabs');
+  const L = document.getElementById('cfScrollL');
+  const R = document.getElementById('cfScrollR');
+  if(!wrap || !L || !R) return;
+  const hasOverflow = wrap.scrollWidth > wrap.clientWidth + 4;
+  L.style.display = (hasOverflow && wrap.scrollLeft > 2) ? 'flex' : 'none';
+  R.style.display = (hasOverflow && wrap.scrollLeft < wrap.scrollWidth - wrap.clientWidth - 2) ? 'flex' : 'none';
 }
 
-async function showCFFilter(isoOrArray){
-  const isos = Array.isArray(isoOrArray) ? isoOrArray : [isoOrArray];
-  // Check local posts first
-  const filtered = dynCats.filter(d => isos.includes(d.cat.iso));
-  if(filtered.length > 0){
-    buildCatSections(filtered);
+function cfScroll(dir){
+  const wrap = document.getElementById('cfTabs');
+  if(wrap){ wrap.scrollBy({left: dir*180, behavior:'smooth'}); setTimeout(cfUpdateArrows, 300); }
+}
+
+/* Show country — ONLY from loaded posts */
+function cfShowCountry(cat){
+  const box = document.getElementById('catSections');
+
+  // Find in dynCats first (already categorised)
+  const dynMatch = dynCats.find(d => d.cat.iso === cat.iso);
+  if(dynMatch && dynMatch.posts.length){
+    box.innerHTML = '';
+    box.appendChild(cfBuildSection(cat, dynMatch.posts));
     return;
   }
-  // No local articles — fetch from WP
-  const cat = ALL_COUNTRIES.find(x => isos.includes(x.iso));
-  const container = document.getElementById('catSections');
-  // Show skeleton immediately (NOT buildCatSections which adds pills)
-  container.innerHTML = '<div class="sk" style="height:220px;border-radius:3px;margin-top:18px"></div>';
-  if(cat){
-    try{
-      const r = await fetch(`https://eurovisionfun.com/wp-json/wp/v2/posts?per_page=9&_embed&search=${encodeURIComponent(cat.name)}`);
-      const posts = await r.json();
-      if(posts && posts.length){
-        const fakeCat = {cat, posts, count:posts.length, score:0};
-        // Build section manually without touching dynCats or pills
-        buildSingleCatSection(container, fakeCat, 0);
-        return;
-      }
-    }catch(e){}
+
+  // Scan all loaded posts with exact match
+  const posts = allPosts.filter(p => catForPost(p)?.iso === cat.iso);
+  if(posts.length){
+    box.innerHTML = '';
+    box.appendChild(cfBuildSection(cat, posts));
+    return;
   }
-  // Nothing found
-  container.innerHTML = `<div style="padding:32px 0;color:var(--tx3);font-size:13px;text-align:center">
-    <div style="font-size:24px;margin-bottom:10px">📭</div>
-    Δεν βρέθηκαν πρόσφατα άρθρα${cat?' για <strong style="color:var(--tx)">'+cat.name+'</strong>':''}.
-    <br><button onclick="buildCatSections(dynCats);selCFTab(document.querySelector('.cf-tab'));scrollToFeed()" style="margin-top:14px;font-size:11px;font-weight:700;color:var(--vi);background:none;border:1px solid var(--br2);padding:7px 16px;border-radius:3px;cursor:pointer">← Πίσω στα trending</button>
-  </div>`;
+
+  // No posts found in loaded 40 — show message with link to category
+  box.innerHTML = `
+    <div style="padding:36px 20px;text-align:center;color:var(--tx3);font-size:13px;line-height:2;border:1px solid var(--br);border-radius:4px;margin-top:8px;background:var(--card)">
+      <div style="font-size:26px;margin-bottom:8px">📭</div>
+      <div>Δεν βρέθηκαν πρόσφατα άρθρα για <strong style="color:var(--tx)">${cat.name}</strong> στα τελευταία 40 νέα.</div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap">
+        <a href="https://eurovisionfun.com/category/eurovision/${cat.slug}/" target="_blank"
+          style="font-size:11px;font-weight:700;color:#fff;background:var(--vi);padding:7px 16px;border-radius:3px;text-decoration:none">
+          Δες όλα τα νέα για ${cat.name} →
+        </a>
+        <button onclick="cfSelect(document.querySelector('.cf-tab'));buildCatSections(dynCats)"
+          style="font-size:11px;font-weight:700;color:var(--vi);background:none;border:1px solid var(--br2);padding:7px 16px;border-radius:3px;cursor:pointer">
+          ← Trending νέα
+        </button>
+      </div>
+    </div>`;
 }
 
-// Build a single cat section without pills or sidebar updates
-function buildSingleCatSection(container, {cat, posts, count}, idx){
-  container.innerHTML = '';
-  const big = posts[0];
-  const bigImg = gi(big,'large')||gi(big,'medium_large')||gi(big);
+function cfBuildSection(cat, posts){
   const sec = document.createElement('div');
   sec.className = 'cat-sec';
+  const big = posts[0];
+  const bigImg = gi(big,'large')||gi(big,'medium_large')||gi(big);
+  const sidePosts = posts.slice(1,5);
   sec.innerHTML = `
     <div class="sec-hd">
       <span class="sec-hd-num">01</span>
       <img class="sec-hd-flag" src="${flag(cat.iso)}" alt="">
       <span class="sec-hd-title">${cat.name.toUpperCase()}</span>
-      <span class="sec-hd-count">${count} ΑΡΘΡΑ</span>
+      <span class="sec-hd-count">${posts.length} ΑΡΘΡΑ</span>
+      <a href="https://eurovisionfun.com/category/eurovision/${cat.slug}/" target="_blank" class="sec-hd-link" style="margin-left:auto">
+        Όλα<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="10" height="10"><polyline points="4,2 8,6 4,10"/></svg>
+      </a>
     </div>
-    <div class="${posts.length>1?'cat-layout':'cat-layout-single'}">
-      <div class="cat-big" onclick="openPost(${big.id})" style="min-height:${posts.length>1?'200':'260'}px">
-        ${bigImg?`<img src="${bigImg}" alt="" loading="lazy">`:'<div class="cat-big-ph"></div>'}
+    <div class="${posts.length > 1 ? 'cat-layout' : 'cat-layout-single'}">
+      <div class="cat-big" onclick="openPost(${big.id})" style="min-height:200px">
+        ${bigImg ? `<div style="position:absolute;inset:0;background-image:url('${bigImg}');background-size:cover;background-position:center;pointer-events:none"></div>` : '<div class="cat-big-ph"></div>'}
         <div class="cat-big-ov"></div>
         <div class="cat-big-body">
           <div class="cat-big-top"><span class="cat-big-tag">${gc(big)}</span><span class="cat-big-date">${fd(big.date)}</span></div>
           <div class="cat-big-t">${dc(big.title.rendered)}</div>
         </div>
       </div>
-      <div class="cat-list">${posts.slice(1,5).map(p=>{const th=gi(p,'thumbnail');return`<div class="cat-li" onclick="openPost(${p.id})">${th?`<img class="cat-li-img" src="${th}" alt="" loading="lazy">`:'<div class="cat-li-ph"></div>'}<div><div class="cat-li-t">${dc(p.title.rendered)}</div><div class="cat-li-m">${fd(p.date)}</div></div></div>`}).join('')}</div>
+      <div class="cat-list">
+        ${sidePosts.map(p => {
+          const th = gi(p,'thumbnail');
+          return `<div class="cat-li" onclick="openPost(${p.id})">
+            ${th ? `<img class="cat-li-img" src="${th}" alt="" loading="lazy">` : '<div class="cat-li-ph"></div>'}
+            <div><div class="cat-li-t">${dc(p.title.rendered)}</div><div class="cat-li-m">${fd(p.date)}</div></div>
+          </div>`;
+        }).join('')}
+      </div>
     </div>`;
   obs(sec);
-  container.appendChild(sec);
+  return sec;
 }
 
-function scrollToFeed(){
-  const bar=document.querySelector('.custom-feed-bar');
-  if(bar){
-    const top=bar.getBoundingClientRect().top+window.scrollY-70;
-    window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
-  }
-}
-
-/* Modal */
+/* Picker */
 function openCFModal(){
   const panel = document.getElementById('cfModal');
-  if(panel.classList.contains('open')){
-    closeCFModal(); return;
-  }
-  cfModalSelected = [...cfSelected];
-  buildCFPicker();
+  if(!panel) return;
+  if(panel.classList.contains('open')){ panel.classList.remove('open'); return; }
+  cfTemp = [...cfSaved];
+  cfBuildPicker();
   panel.classList.add('open');
-  // Scroll to panel
-  setTimeout(()=>{
-    panel.scrollIntoView({behavior:'smooth', block:'nearest'});
-  }, 50);
 }
-function closeCFModal(){
-  document.getElementById('cfModal').classList.remove('open');
-}
-function clearCFeed(){
-  cfModalSelected = [];
-  document.querySelectorAll('.cf-picker-item').forEach(el=>{
-    el.classList.remove('selected');
-    const chk = el.querySelector('.cf-check');
-    if(chk) chk.style.display = 'none';
-  });
-  updateCFCount();
-}
-function buildCFPicker(){
+function closeCFModal(){ document.getElementById('cfModal')?.classList.remove('open'); }
+
+function cfBuildPicker(){
   const grid = document.getElementById('cfPickerGrid');
+  if(!grid) return;
   grid.innerHTML = ALL_COUNTRIES.map(cat => {
-    const sel = cfModalSelected.includes(cat.iso);
-    return `<button class="cf-picker-item${sel?' selected':''}" onclick="toggleCFPicker('${cat.iso}',this)">
-      <img src="${flag(cat.iso)}" alt="${cat.name}" loading="lazy">
+    const sel = cfTemp.includes(cat.iso);
+    return `<button class="cf-picker-item${sel?' selected':''}" onclick="cfTogglePick('${cat.iso}',this)">
+      <img src="${flag(cat.iso)}" alt="" loading="lazy">
       <span>${cat.name}</span>
-      <span class="cf-check" style="display:${sel?'inline':'none'}">✓</span>
+      <span class="cf-check" style="${sel?'':' display:none'}">✓</span>
     </button>`;
   }).join('');
-  updateCFCount();
+  cfUpdateCount();
 }
-function toggleCFPicker(iso, el){
-  const idx = cfModalSelected.indexOf(iso);
-  if(idx === -1){
-    cfModalSelected.push(iso);
-    el.classList.add('selected');
-    const chk = el.querySelector('.cf-check');
-    if(chk) chk.style.display = 'inline';
-  } else {
-    cfModalSelected.splice(idx, 1);
+
+function cfTogglePick(iso, el){
+  const i = cfTemp.indexOf(iso);
+  if(i === -1){ cfTemp.push(iso); el.classList.add('selected'); el.querySelector('.cf-check').style.display='inline'; }
+  else { cfTemp.splice(i,1); el.classList.remove('selected'); el.querySelector('.cf-check').style.display='none'; }
+  cfUpdateCount();
+}
+
+function cfClearAll(){
+  cfTemp = [];
+  document.querySelectorAll('.cf-picker-item').forEach(el => {
     el.classList.remove('selected');
-    const chk = el.querySelector('.cf-check');
-    if(chk) chk.style.display = 'none';
+    el.querySelector('.cf-check').style.display = 'none';
+  });
+  cfUpdateCount();
+}
+
+function cfSaveAndClose(){
+  cfSaved = [...cfTemp];
+  cfSave();
+  closeCFModal();
+  buildCFTabs();
+  if(cfSaved.length > 0){
+    const first = ALL_COUNTRIES.find(x => x.iso === cfSaved[0]);
+    if(first){
+      const tab = document.querySelector('.cf-tab[data-iso="'+first.iso+'"]');
+      cfSelect(tab);
+      cfShowCountry(first);
+    }
+  } else {
+    cfSelect(document.querySelector('.cf-tab'));
+    buildCatSections(dynCats);
   }
-  updateCFCount();
 }
-function updateCFCount(){
+
+function cfUpdateCount(){
   const el = document.getElementById('cfCount');
-  if(el) el.textContent = cfModalSelected.length;
+  if(el) el.textContent = cfTemp.length;
 }
+
+// Close picker on outside click
+document.addEventListener('click', e => {
+  const panel = document.getElementById('cfModal');
+  const bar   = document.querySelector('.custom-feed-bar');
+  if(panel && bar && !panel.contains(e.target) && !bar.contains(e.target))
+    closeCFModal();
+});
+window.addEventListener('resize', cfUpdateArrows);
+
+
+/* ═══════════════════════════════════════════
+   SEARCH
+═══════════════════════════════════════════ */
+let srTimer = null;
+
+function srOpen(){
+  const overlay = document.getElementById('searchOverlay');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(()=>{ document.getElementById('searchInp')?.focus(); }, 100);
+  // Show recent articles as default
+  srRender(allPosts.slice(0,8), '');
+  document.getElementById('searchHint').textContent =
+    `Αναζήτηση σε ${allPosts.length} άρθρα`;
+}
+
+function srClose(){
+  document.getElementById('searchOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('searchInp').value = '';
+}
+
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') srClose();
+  if((e.ctrlKey||e.metaKey) && e.key === 'k'){ e.preventDefault(); srOpen(); }
+});
+
+function srKey(e){
+  if(e.key === 'Enter'){
+    const results = document.querySelectorAll('.search-result');
+    if(results.length){ results[0].click(); }
+  }
+}
+
+function srSearch(q){
+  clearTimeout(srTimer);
+  srTimer = setTimeout(()=>{
+    const query = q.trim().toLowerCase();
+    if(!query || query.length < 2){
+      srRender(allPosts.slice(0,8), '');
+      document.getElementById('searchHint').textContent = `Αναζήτηση σε ${allPosts.length} άρθρα`;
+      return;
+    }
+    // Search in title + excerpt
+    const results = allPosts.filter(p => {
+      const title = dc(p.title.rendered).toLowerCase();
+      const excerpt = (p.excerpt?.rendered||'').replace(/<[^>]+>/g,'').toLowerCase();
+      return title.includes(query) || excerpt.includes(query);
+    });
+    srRender(results, query);
+    document.getElementById('searchHint').textContent =
+      results.length > 0 ? `${results.length} αποτελέσματα για "${q}"` : '';
+  }, 200);
+}
+
+function srHighlight(text, query){
+  if(!query||query.length<2) return text;
+  try{
+    const parts = text.split(new RegExp('(' + query + ')', 'gi'));
+    return parts.map((p,i) => i%2===1 ? '<span class="sr-highlight">'+p+'</span>' : p).join('');
+  }catch(e){ return text; }
+}
+
+function srRender(posts, query){
+  const box = document.getElementById('searchResults');
+  if(!posts.length && query){
+    box.innerHTML = `<div class="search-empty"><strong>Δεν βρέθηκαν αποτελέσματα</strong>Δοκίμασε διαφορετικές λέξεις-κλειδιά</div>`;
+    return;
+  }
+  box.innerHTML = (query ? `<div class="search-count">${posts.length} ΑΠΟΤΕΛΕΣΜΑΤΑ</div>` : '<div class="search-count">ΤΕΛΕΥΤΑΙΑ ΑΡΘΡΑ</div>') +
+    posts.slice(0,20).map(p => {
+      const img = gi(p,'thumbnail') || gi(p,'medium');
+      const title = srHighlight(dc(p.title.rendered), query);
+      return `<div class="search-result" onclick="srClose();openPost(${p.id})">
+        ${img ? `<img class="sr-img" src="${img}" alt="" loading="lazy">` : '<div class="sr-img"></div>'}
+        <div class="sr-body">
+          <div class="sr-cat">${gc(p)}</div>
+          <div class="sr-t">${title}</div>
+          <div class="sr-m">${fd(p.date)}</div>
+        </div>
+      </div>`;
+    }).join('');
+}
+
+/* ═══════════════════════════════════════════
+   URL HASHING — share article links
+═══════════════════════════════════════════ */
+function updateHash(id){
+  if(history.pushState){
+    history.pushState(null, '', '#article-' + id);
+  }
+}
+
+function checkHash(){
+  const hash = window.location.hash;
+  if(hash && hash.startsWith('#article-')){
+    const id = parseInt(hash.replace('#article-',''));
+    if(id) openPost(id);
+  }
+}
+
+window.addEventListener('popstate', ()=>{
+  const hash = window.location.hash;
+  if(!hash || hash === '#'){
+    showSection('home');
+    history.replaceState(null,'','#');
+  } else if(hash.startsWith('#article-')){
+    const id = parseInt(hash.replace('#article-',''));
+    if(id) openPost(id);
+  }
+});
+
+/* ═══════════════════════════════════════════
+   READING PROGRESS BAR
+═══════════════════════════════════════════ */
+window.addEventListener('scroll', ()=>{
+  // Back to top
+  const btt = document.getElementById('backToTop');
+  if(btt) btt.classList.toggle('visible', window.scrollY > 400);
+
+  // Reading progress (only on article page)
+  const artPage = document.getElementById('artPage');
+  const prog = document.getElementById('readingProgress');
+  if(!prog) return;
+  if(artPage && artPage.style.display !== 'none'){
+    prog.classList.add('visible');
+    // Measure from top of article title to bottom of article body
+    const artStart = document.getElementById('artTitle');
+    const artEnd   = document.getElementById('artTags') || document.getElementById('artBody');
+    if(artStart && artEnd){
+      const startY  = artStart.getBoundingClientRect().top + window.scrollY;
+      const endY    = artEnd.getBoundingClientRect().bottom + window.scrollY;
+      const total   = endY - startY;
+      // How far the reader has scrolled through the article
+      // "done" when bottom of viewport passes artEnd
+      const viewH   = window.innerHeight;
+      const scrolled = window.scrollY + viewH - startY;
+      const pct = Math.min(100, Math.max(0, (scrolled / (total + viewH * 0.3)) * 100));
+      prog.style.width = pct + '%';
+    }
+  } else {
+    prog.classList.remove('visible');
+    prog.style.width = '0%';
+  }
+}, {passive:true});
+
+
+
+/* ═══════════════════════════════════════════
+   DYNAMIC SEO
+═══════════════════════════════════════════ */
+function updateSEO(post){
+  if(!post){ resetSEO(); return; }
+  const title = dc(post.title.rendered) + ' — EurovisionFun';
+  const desc  = (post.excerpt?.rendered||'').replace(/<[^>]+>/g,'').trim().slice(0,160);
+  const img   = gi(post,'large')||gi(post,'medium_large')||gi(post,'medium')||'';
+  const url   = post.link||location.href;
+  const cat   = gc(post);
+
+  // <title>
+  document.title = title;
+  _setMeta('pageTitle', title, 'textContent');
+  _setMeta('metaDesc', desc);
+  _setMeta('ogTitle', title);
+  _setMeta('ogDesc', desc);
+  _setMeta('ogImage', img);
+  _setMeta('ogUrl', url);
+  _setMeta('ogType', 'article');
+  _setMeta('twTitle', title);
+  _setMeta('twDesc', desc);
+  _setMeta('twImage', img);
+  _setMeta('canonicalUrl', url, 'href');
+
+  // JSON-LD Article schema
+  const ld = {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline": dc(post.title.rendered),
+    "description": desc,
+    "image": img,
+    "url": url,
+    "datePublished": post.date,
+    "dateModified": post.modified||post.date,
+    "publisher": {"@type":"Organization","name":"EurovisionFun","url":"https://eurovisionfun.com"},
+    "articleSection": cat
+  };
+  const ldEl = document.getElementById('jsonLd');
+  if(ldEl) ldEl.textContent = JSON.stringify(ld);
+}
+
+function resetSEO(){
+  document.title = 'EurovisionFun — Eurovision News | Music | Fun';
+  _setMeta('ogType','website');
+  _setMeta('canonicalUrl','https://eurovisionfun.com','href');
+  const ld={"@context":"https://schema.org","@type":"WebSite","name":"EurovisionFun","url":"https://eurovisionfun.com"};
+  const ldEl=document.getElementById('jsonLd');
+  if(ldEl) ldEl.textContent=JSON.stringify(ld);
+}
+
+function _setMeta(id, val, attr='content'){
+  const el=document.getElementById(id);
+  if(el) el[attr]=val||'';
+}
+
+
+/* ═══════════════════════════════════════════
+   COOKIE CONSENT
+═══════════════════════════════════════════ */
+const COOKIE_KEY = 'ef_cookies';
+
+function cookieInit(){
+  const consent = localStorage.getItem(COOKIE_KEY);
+  if(!consent){
+    // Show after 1.5s
+    setTimeout(()=>{
+      const bar = document.getElementById('cookieBar');
+      if(bar) bar.classList.add('visible');
+    }, 1500);
+  } else if(consent === 'accepted'){
+    loadAnalytics();
+  }
+}
+
+function cookieAccept(){
+  localStorage.setItem(COOKIE_KEY,'accepted');
+  const bar = document.getElementById('cookieBar');
+  if(bar){ bar.classList.remove('visible'); }
+  loadAnalytics();
+}
+
+function cookieDecline(){
+  localStorage.setItem(COOKIE_KEY,'declined');
+  const bar = document.getElementById('cookieBar');
+  if(bar) bar.classList.remove('visible');
+}
+
+function loadAnalytics(){
+  // Google Analytics / AdSense loads here after consent
+  // Replace GA_MEASUREMENT_ID with your real ID
+  // const s=document.createElement('script');
+  // s.src='https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
+  // s.async=true; document.head.appendChild(s);
+}
+
+
+/* ═══════════════════════════════════════════
+   ADS — inject inline ad after 3rd paragraph
+═══════════════════════════════════════════ */
+function injectArticleAd(bodyEl){
+  if(!bodyEl) return;
+  const consent = localStorage.getItem(COOKIE_KEY);
+  if(consent !== 'accepted') return; // Only show ads with consent
+  const paras = bodyEl.querySelectorAll('p');
+  if(paras.length >= 3){
+    const adDiv = document.createElement('div');
+    adDiv.className = 'ad-slot ad-slot-inline';
+    adDiv.id = 'adInArticle';
+    adDiv.innerHTML = '<!-- AdSense inline ad here -->';
+    paras[2].after(adDiv);
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+   SWIPE GESTURES — slider
+═══════════════════════════════════════════ */
+function initSwipe(el, onLeft, onRight){
+  if(!el) return;
+  let startX=0, startY=0, isDragging=false;
+  el.addEventListener('touchstart', e=>{
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    isDragging = true;
+  },{passive:true});
+  el.addEventListener('touchmove', e=>{
+    if(!isDragging) return;
+    const dx = e.touches[0].clientX - startX;
+    const dy = e.touches[0].clientY - startY;
+    // If more horizontal than vertical, prevent page scroll
+    if(Math.abs(dx) > Math.abs(dy)) e.preventDefault();
+  },{passive:false});
+  el.addEventListener('touchend', e=>{
+    if(!isDragging) return;
+    isDragging = false;
+    const dx = e.changedTouches[0].clientX - startX;
+    const dy = e.changedTouches[0].clientY - startY;
+    if(Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50){
+      if(dx < 0) onLeft();   // swipe left = next
+      else onRight();          // swipe right = prev
+    }
+  },{passive:true});
+}
+
+
+/* ═══════════════════════════════════════════
+   TAG PAGE
+═══════════════════════════════════════════ */
+async function openTag(tagName, tagSlug){
+  // Show tag page
+  ['homePage','artPage','calPage','aboutPage','tagPage','archivePage'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.style.display='none';
+  });
+  document.getElementById('tagPage').style.display='block';
+  window.scrollTo({top:0});
+  document.getElementById('tagName').textContent='#'+tagName;
+  document.getElementById('tagCount').textContent='';
+  document.getElementById('tagGrid').innerHTML=
+    '<div class="sk" style="height:200px;border-radius:3px"></div>'.repeat(3);
+
+  try{
+    // 1. Check local posts first
+    const local = allPosts.filter(p=>{
+      try{
+        const tags = p._embedded['wp:term'][1]||[];
+        return tags.some(t=>t.slug===tagSlug||t.name.toLowerCase()===tagName.toLowerCase());
+      }catch(e){return false;}
+    });
+
+    if(local.length > 0){
+      renderTagGrid(tagName, local);
+      return;
+    }
+
+    // 2. Fetch from WP by tag
+    const tagR = await fetch(`https://eurovisionfun.com/wp-json/wp/v2/tags?slug=${tagSlug}&per_page=1`);
+    const tagData = await tagR.json();
+    const tagId = tagData?.[0]?.id;
+    if(tagId){
+      const postsR = await fetch(`https://eurovisionfun.com/wp-json/wp/v2/posts?per_page=20&_embed&tags=${tagId}`);
+      const posts = await postsR.json();
+      renderTagGrid(tagName, posts);
+    } else {
+      document.getElementById('tagGrid').innerHTML='<div class="tag-empty">Δεν βρέθηκαν άρθρα για αυτό το tag.</div>';
+    }
+  }catch(e){
+    document.getElementById('tagGrid').innerHTML='<div class="tag-empty">Σφάλμα φόρτωσης.</div>';
+  }
+}
+
+function renderTagGrid(tagName, posts){
+  const count = posts.length;
+  document.getElementById('tagCount').textContent=count+' άρθρα';
+  document.getElementById('tagGrid').innerHTML = posts.map(p=>{
+    const img = gi(p,'medium_large')||gi(p,'medium');
+    return`<div class="tag-card" onclick="openPost(${p.id})">
+      ${img?`<img class="tag-card-img" src="${img}" alt="" loading="lazy">`:'<div class="tag-card-img"></div>'}
+      <div class="tag-card-body">
+        <div class="tag-card-meta">${gc(p)}</div>
+        <div class="tag-card-t">${dc(p.title.rendered)}</div>
+        <div class="tag-card-date">${fd(p.date)}</div>
+      </div>
+    </div>`;
+  }).join('') || '<div class="tag-empty">Δεν βρέθηκαν άρθρα.</div>';
+}
+
+/* ═══════════════════════════════════════════
+   SMARTER RELATED ARTICLES
+═══════════════════════════════════════════ */
+function buildRelated(currentPost){
+  const box = document.getElementById('relGrid');
+  if(!box) return;
+  const currentCat = gc(currentPost);
+  const currentId  = currentPost.id;
+
+  // Priority: same category first, then recent
+  const sameCat = allPosts.filter(p=>p.id!==currentId&&gc(p)===currentCat);
+  const others  = allPosts.filter(p=>p.id!==currentId&&gc(p)!==currentCat);
+  const related = [...sameCat, ...others].slice(0,6);
+
+  box.innerHTML = related.map(p=>{
+    const img = gi(p,'medium_large')||gi(p,'medium');
+    return`<div class="rel-c" onclick="openPost(${p.id})">
+      ${img?`<img class="rel-img" src="${img}" alt="" loading="lazy">`:'<div class="rel-ph"></div>'}
+      <div class="rel-cat-badge">
+        ${gc(p)===currentCat?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="9" height="9" style="opacity:.6"><path d="M4 4h6v6H4z"/><path d="M14 4h6v6h-6z"/><path d="M4 14h6v6H4z"/><path d="M14 14h6v6h-6z"/></svg>':''}
+        ${gc(p)}
+      </div>
+      <div class="rel-t">${dc(p.title.rendered)}</div>
+    </div>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════════════════
+   TRENDING THIS WEEK
+═══════════════════════════════════════════ */
+function buildTrending(){
+  // Posts from last 7 days, sorted by recency
+  // (WP doesn't give view counts via REST without plugin, so we use recency + position as proxy)
+  const weekAgo = Date.now() - 7*24*60*60*1000;
+  const recent  = allPosts.filter(p => new Date(p.date).getTime() > weekAgo);
+  const trending = recent.length >= 3 ? recent : allPosts.slice(0,8);
+  return trending.slice(0,7);
+}
+
+function renderTrendingSection(container){
+  const posts = buildTrending();
+  if(!posts.length || !container) return;
+  const weekAgo = Date.now() - 7*24*60*60*1000;
+
+  const div = document.createElement('div');
+  div.className='trending-sec fi';
+  div.innerHTML=`
+    <div class="sec-hd">
+      <span class="sec-hd-num">🔥</span>
+      <span class="sec-hd-title">TRENDING ΤΗΝ ΕΒΔΟΜΑΔΑ</span>
+    </div>
+    <div class="trending-list">
+      ${posts.map((p,i)=>{
+        const img=gi(p,'thumbnail');
+        const isNew=new Date(p.date).getTime()>weekAgo;
+        return`<div class="trending-item" onclick="openPost(${p.id})">
+          <div class="trending-rank">${String(i+1).padStart(2,'0')}</div>
+          ${img?`<img class="trending-img" src="${img}" alt="" loading="lazy">`:'<div class="trending-img"></div>'}
+          <div class="trending-body">
+            <div class="trending-t">${dc(p.title.rendered)}</div>
+            <div class="trending-m">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              ${gc(p)} · ${fd(p.date)}
+            </div>
+          </div>
+          ${isNew?'<span class="trending-fire">ΝΕΟΝ</span>':''}
+        </div>`;
+      }).join('')}
+    </div>`;
+  obs(div);
+  container.appendChild(div);
+}
+
+/* ═══════════════════════════════════════════
+   ARCHIVE PAGE
+═══════════════════════════════════════════ */
+function showArchive(){
+  ['homePage','artPage','calPage','aboutPage','tagPage'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.style.display='none';
+  });
+  document.getElementById('archivePage').style.display='block';
+  window.scrollTo({top:0});
+  buildArchiveYears();
+}
+
+function buildArchiveYears(){
+  const years = [...new Set(allPosts.map(p=>new Date(p.date).getFullYear()))].sort((a,b)=>b-a);
+  // Add more years even if no local posts (site exists since 2018)
+  const allYears = new Set([...years]);
+  for(let y=2018;y<=new Date().getFullYear();y++) allYears.add(y);
+  const sorted = [...allYears].sort((a,b)=>b-a);
+
+  document.getElementById('archiveYears').innerHTML = sorted.map(y=>
+    `<button class="archive-year-btn" onclick="loadArchiveYear(${y},this)">${y}</button>`
+  ).join('');
+
+  // Auto-load current year
+  const firstBtn = document.querySelector('.archive-year-btn');
+  if(firstBtn) firstBtn.click();
+}
+
+async function loadArchiveYear(year, btn){
+  document.querySelectorAll('.archive-year-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  const box = document.getElementById('archiveContent');
+  box.innerHTML='<div class="archive-loading">Φόρτωση...</div>';
+
+  try{
+    // Check local posts
+    let posts = allPosts.filter(p=>new Date(p.date).getFullYear()===year);
+
+    // If few local posts, fetch from WP with date filter
+    if(posts.length < 5){
+      const after  = `${year}-01-01T00:00:00`;
+      const before = `${year}-12-31T23:59:59`;
+      const r = await fetch(`https://eurovisionfun.com/wp-json/wp/v2/posts?per_page=50&_embed&after=${after}&before=${before}&orderby=date&order=desc`);
+      const fetched = await r.json();
+      if(fetched?.length) posts = fetched;
+    }
+
+    if(!posts.length){
+      box.innerHTML='<div class="archive-loading">Δεν βρέθηκαν άρθρα για το '+year+'.</div>';
+      return;
+    }
+
+    // Group by month
+    const months=['Ιανουάριος','Φεβρουάριος','Μάρτιος','Απρίλιος','Μάιος','Ιούνιος','Ιούλιος','Αύγουστος','Σεπτέμβριος','Οκτώβριος','Νοέμβριος','Δεκέμβριος'];
+    const byMonth={};
+    posts.forEach(p=>{
+      const m=new Date(p.date).getMonth();
+      if(!byMonth[m]) byMonth[m]=[];
+      byMonth[m].push(p);
+    });
+
+    box.innerHTML = Object.entries(byMonth).sort((a,b)=>b[0]-a[0]).map(([m,mPosts])=>`
+      <div class="archive-month">
+        <div class="archive-month-title">${months[m]} ${year} · ${mPosts.length} άρθρα</div>
+        <div class="archive-list">
+          ${mPosts.map(p=>{const img=gi(p,'thumbnail');return`
+            <div class="archive-item" onclick="openPost(${p.id})">
+              ${img?`<img class="archive-img" src="${img}" alt="" loading="lazy">`:'<div class="archive-img"></div>'}
+              <div>
+                <div class="archive-t">${dc(p.title.rendered)}</div>
+                <div class="archive-d">${gc(p)} · ${fd(p.date)}</div>
+              </div>
+            </div>`}).join('')}
+        </div>
+      </div>`).join('');
+  }catch(e){
+    box.innerHTML='<div class="archive-loading">Σφάλμα φόρτωσης.</div>';
+  }
+}
+
+/* ═══════════════════════════════════════════
+   PWA — Progressive Web App Install
+═══════════════════════════════════════════ */
+let pwaPrompt = null;
+
+window.addEventListener('beforeinstallprompt', e=>{
+  e.preventDefault();
+  pwaPrompt = e;
+  // Show banner after 10 seconds on mobile
+  if(!localStorage.getItem('pwa_dismissed')){
+    setTimeout(()=>{
+      const banner=document.getElementById('pwaBanner');
+      if(banner) banner.classList.add('show');
+    }, 10000);
+  }
+});
+
+function pwaInstall(){
+  if(pwaPrompt){
+    pwaPrompt.prompt();
+    pwaPrompt.userChoice.then(r=>{
+      if(r.outcome==='accepted') pwaDismiss();
+      pwaPrompt=null;
+    });
+  } else {
+    // iOS — show instructions
+    alert('Πάτησε το κουμπί "Κοινοποίηση" (□↑) και μετά "Προσθήκη στην Αρχική Οθόνη"');
+  }
+}
+
+function pwaDismiss(){
+  const banner=document.getElementById('pwaBanner');
+  if(banner) banner.classList.remove('show');
+  localStorage.setItem('pwa_dismissed','1');
+}
+
+// iOS Safari — show differently (no beforeinstallprompt event)
+(()=>{
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isInApp = window.navigator.standalone;
+  const dismissed = localStorage.getItem('pwa_dismissed');
+  if(isIOS && !isInApp && !dismissed){
+    setTimeout(()=>{
+      const banner=document.getElementById('pwaBanner');
+      if(banner){
+        banner.querySelector('.pwa-sub').textContent='Πάτησε Κοινοποίηση → Αρχική Οθόνη';
+        banner.classList.add('show');
+      }
+    }, 10000);
+  }
+})();
 
 /* ═══════════════════════════════════════════
    INIT
@@ -1962,7 +2924,7 @@ function updateCFCount(){
 async function init(){
   buildCountryGrids();
   try{
-    const r=await fetch(`${getWP()}/posts?per_page=40&page=1&_embed`);
+    const r=await fetch(`${getWP()}/posts?per_page=100&page=1&_embed`);
     if(!r.ok)throw new Error('API error '+r.status);
     allPosts=await r.json();
     latestId=allPosts[0]?.id||0;
@@ -1971,18 +2933,15 @@ async function init(){
     buildRow4(allPosts);
     const cats=analyzeCats(allPosts);
     buildCatTabs(cats);
-    loadCFeed();
+    cfLoad();
     buildCFTabs();
-    // If user has custom feed, show it; else show top cats
-    if(cfSelected.length > 0){
-      buildCatSections(dynCats.filter(d=>cfSelected.includes(d.cat.iso)));
-    } else {
-      buildCatSections(cats);
-    }
-    buildList(allPosts.slice(10,16));
+    buildCatSections(cats);
+    buildList(allPosts.slice(10,22));
     buildFlagGrid(cats);
     buildFacts(allPosts);
     setInterval(checkNew,REFRESH_MS);
+    checkHash();
+    cookieInit(); // open article if URL has #article-ID
   }catch(e){
     console.error('Init error:',e);
     // If EN fails, fallback to EL
@@ -1990,13 +2949,13 @@ async function init(){
       siteLang='el';
       console.log('EN endpoint failed, falling back to EL');
       try{
-        const r2=await fetch('https://eurovisionfun.com/wp-json/wp/v2/posts?per_page=40&page=1&_embed');
+        const r2=await fetch('https://eurovisionfun.com/wp-json/wp/v2/posts?per_page=100&page=1&_embed');
         if(!r2.ok)throw new Error('EL also failed');
         allPosts=await r2.json();
         latestId=allPosts[0]?.id||0;
         buildTicker(allPosts);buildSlider(allPosts);buildRow4(allPosts);
         const cats=analyzeCats(allPosts);buildCatTabs(cats);buildCatSections(cats);
-        buildList(allPosts.slice(10,16));buildFlagGrid(cats);buildFacts(allPosts);
+        buildList(allPosts.slice(10,22));buildFlagGrid(cats);buildFacts(allPosts);
         setInterval(checkNew,REFRESH_MS);
         return;
       }catch(e2){console.error('EL fallback also failed:',e2)}
@@ -2007,7 +2966,7 @@ async function init(){
 }
 
 // Update scroll arrows on resize
-window.addEventListener("resize", updateCFScrollBtns);
+window.addEventListener("resize", cfUpdateArrows);
 
 // Close custom feed panel on outside click
 document.addEventListener('click', e=>{
@@ -2026,8 +2985,8 @@ init();
   <div class="cf-picker-hd">
    <div class="cf-picker-title">Επίλεξε χώρες για το feed σου</div>
    <div class="cf-picker-actions">
-    <button class="cf-clear-btn" onclick="clearCFeed()">Καθαρισμός</button>
-    <button class="cf-save-btn" onclick="saveCFeed()">
+    <button class="cf-clear-btn" onclick="cfClearAll()">Καθαρισμός</button>
+    <button class="cf-save-btn" onclick="cfSaveAndClose()">
      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="11" height="11"><polyline points="20 6 9 17 4 12"/></svg>
      Αποθήκευση
     </button>
