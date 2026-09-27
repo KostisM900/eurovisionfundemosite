@@ -165,6 +165,11 @@
   .meta { font-family: var(--mono); font-size: 11px; color: var(--muted); }
   .close-x { position: absolute; top: calc(14px + env(safe-area-inset-top, 0px)); right: 14px; z-index: 2; background: rgba(255,255,255,.08); border: 1px solid var(--line); border-radius: 999px; width: 38px; height: 38px; cursor: pointer; font-size: 18px; }
   .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--text); color: var(--ink); padding: 10px 16px; border-radius: 10px; font-weight: 600; font-size: 14px; z-index: 60; }
+  .scriptbox { border: 1px solid rgba(255,209,102,.35); background: rgba(255,209,102,.06); border-radius: 12px; padding: 14px 16px; font-size: 13.5px; display: flex; flex-direction: column; gap: 8px; }
+  .scriptbox b { color: var(--gold); }
+  .scriptbox ol { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 5px; color: var(--muted); }
+  .scriptbox ol b { color: var(--text); }
+  kbd, code { font-family: var(--mono); font-size: 12px; background: var(--ink); border: 1px solid var(--line); border-radius: 5px; padding: 1px 5px; color: var(--text); }
   details.help { font-size: 13px; color: var(--muted); }
   details.help summary { cursor: pointer; color: var(--text); font-weight: 600; }
   details.help ol { padding-left: 18px; margin: 8px 0 0; display: flex; flex-direction: column; gap: 4px; }
@@ -201,7 +206,17 @@
     <div class="side">
       <section class="panel">
         <h2><span class="n">1</span> Σχόλια</h2>
-        <p class="hint">Άνοιξε το post στο instagram.com από υπολογιστή, πάτα «Φόρτωση περισσότερων» μέχρι να εμφανιστούν όλα, μετά επίλεξε τα σχόλια και επικόλλησέ τα εδώ. Δέχεται και μορφή <code>username σχόλιο</code> ανά γραμμή ή CSV.</p>
+        <div class="scriptbox">
+          <b>Γρήγορος τρόπος για πολλά σχόλια</b>
+          <ol>
+            <li>Σε υπολογιστή, άνοιξε το post στο instagram.com σε δική του σελίδα (instagram.com/p/…), συνδεδεμένος με τον λογαριασμό σου.</li>
+            <li>Πάτα <kbd>F12</kbd> και διάλεξε την καρτέλα <b>Console</b>.</li>
+            <li>Πάτα «Αντιγραφή script», κάνε επικόλληση στην κονσόλα και Enter. Αν ο Chrome το μπλοκάρει, γράψε <code>allow pasting</code>, πάτα Enter και ξανακάνε επικόλληση.</li>
+            <li>Περίμενε να γράψει «Έτοιμο». Για 3000 σχόλια θέλει 3–5 λεπτά. Μετά άνοιξε το CSV που κατέβηκε εδώ με το «Άνοιγμα αρχείου».</li>
+          </ol>
+          <div class="btns"><button class="btn gold" type="button" id="copyScript">Αντιγραφή script</button></div>
+        </div>
+        <p class="hint">Εναλλακτικά, για λίγα σχόλια: άνοιξε το post στο instagram.com από υπολογιστή, πάτα «Φόρτωση περισσότερων» μέχρι να εμφανιστούν όλα, μετά επίλεξε τα σχόλια και επικόλλησέ τα εδώ. Δέχεται και μορφή <code>username σχόλιο</code> ανά γραμμή ή CSV.</p>
         <div>
           <label for="raw">Επικόλληση σχολίων</label>
           <textarea id="raw" spellcheck="false"></textarea>
@@ -253,6 +268,11 @@
             <input type="number" id="nAlt" min="0" max="20" value="2">
           </div>
         </div>
+        <div>
+          <label for="deadline">Λήξη διαγωνισμού (για σχόλια από το script)</label>
+          <input type="datetime-local" id="deadline" value="2026-09-27T17:00">
+        </div>
+        <label class="check"><input type="checkbox" id="countReplies"> Μετράνε και οι απαντήσεις σε σχόλια</label>
         <div>
           <label for="prize">Δώρο (εμφανίζεται στο video)</label>
           <input type="text" id="prize" value="Διπλή πρόσκληση για τον Slimane" autocomplete="off">
@@ -322,6 +342,110 @@
 <input type="file" id="avatarFile" accept="image/*" hidden>
 <div class="toast" id="toast" hidden></div>
 
+<script type="text/plain" id="igScript">// EurovisionFun · Λήψη σχολίων Instagram
+// Τρέξε το στην κονσόλα (F12 → Console) ενώ είσαι στη σελίδα του post: instagram.com/p/...
+(async () => {
+  const INCLUDE_REPLIES = false; // true = μετράνε και οι απαντήσεις σε σχόλια
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const box = document.createElement("div");
+  box.style.cssText = "position:fixed;z-index:999999;left:50%;top:20px;transform:translateX(-50%);background:#1B1230;color:#F4EEFF;font:600 15px system-ui;padding:14px 20px;border-radius:12px;border:2px solid #FF2E88;box-shadow:0 10px 40px rgba(0,0,0,.5);max-width:90vw";
+  document.body.appendChild(box);
+  const say = (t) => { box.textContent = t; console.log("[EurovisionFun]", t); };
+
+  const m = location.pathname.match(/\/(?:p|reel|reels|tv)\/([A-Za-z0-9_-]+)/);
+  if (!m) { say("Άνοιξε πρώτα το ίδιο το post (instagram.com/p/...) και ξανατρέξε το script."); return; }
+
+  let mediaId = null;
+  const meta = document.querySelector('meta[property="al:ios:url"], meta[property="al:android:url"]');
+  const mm = meta && meta.content.match(/id=(\d+)/);
+  if (mm) mediaId = mm[1];
+  if (!mediaId) {
+    const abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+    let id = 0n;
+    for (const ch of m[1].slice(0, 11)) id = id * 64n + BigInt(abc.indexOf(ch));
+    mediaId = id.toString();
+  }
+
+  const csrf = (document.cookie.match(/csrftoken=([^;]+)/) || [])[1] || "";
+  const headers = { "X-IG-App-ID": "936619743392459", "X-Requested-With": "XMLHttpRequest", "X-CSRFToken": csrf };
+
+  async function get(url) {
+    for (let attempt = 0; attempt < 6; attempt++) {
+      const r = await fetch(url, { headers, credentials: "include" });
+      if (r.ok) return r.json();
+      if (r.status === 429 || r.status >= 500) {
+        const wait = 15000 * (attempt + 1);
+        say(`Το Instagram ζήτησε παύση. Συνεχίζω σε ${wait / 1000}″…`);
+        await sleep(wait);
+        continue;
+      }
+      throw new Error(`HTTP ${r.status}`);
+    }
+    throw new Error("Πολλές αποτυχίες στη σειρά");
+  }
+
+  const rows = [];
+  const seen = new Set();
+  const add = (c, isReply) => {
+    if (!c || seen.has(String(c.pk))) return;
+    seen.add(String(c.pk));
+    rows.push({
+      username: c.user?.username || "",
+      text: (c.text || "").replace(/\s+/g, " ").trim(),
+      created_at: c.created_at ? new Date(c.created_at * 1000).toISOString() : "",
+      is_reply: isReply ? "yes" : "no",
+      profile_pic_url: c.user?.profile_pic_url || "",
+    });
+  };
+
+  async function replies(c) {
+    let cursor = "";
+    for (let page = 0; page < 50; page++) {
+      const j = await get(`/api/v1/media/${mediaId}/comments/${c.pk}/child_comments/?max_id=${encodeURIComponent(cursor)}`);
+      (j.child_comments || []).forEach((x) => add(x, true));
+      if (!j.has_more_tail_child_comments || !j.next_max_child_cursor) break;
+      cursor = j.next_max_child_cursor;
+      await sleep(600);
+    }
+  }
+
+  say("Ξεκινάω τη λήψη σχολίων…");
+  let param = "", cursor = "", pages = 0, total = null;
+  try {
+    while (true) {
+      const url = `/api/v1/media/${mediaId}/comments/?can_support_threading=true&permalink_enabled=false` + (cursor ? `&${param}=${encodeURIComponent(cursor)}` : "");
+      const j = await get(url);
+      if (total == null) total = j.comment_count || null;
+      const list = j.comments || [];
+      for (const c of list) {
+        add(c, false);
+        if (INCLUDE_REPLIES) {
+          (c.preview_child_comments || []).forEach((x) => add(x, true));
+          if ((c.child_comment_count || 0) > (c.preview_child_comments || []).length) await replies(c);
+        }
+      }
+      pages++;
+      say(`Σχόλια: ${rows.length}${total ? " / ~" + total : ""} (σελίδα ${pages})`);
+      if (j.next_min_id) { param = "min_id"; cursor = j.next_min_id; }
+      else if (j.next_max_id) { param = "max_id"; cursor = j.next_max_id; }
+      else break;
+      if (!list.length) break;
+      await sleep(700 + Math.random() * 600);
+    }
+  } catch (e) {
+    say(`Σταμάτησε με σφάλμα (${e.message}). Κατεβάζω όσα πήρα: ${rows.length}.`);
+  }
+
+  const esc = (v) => `"${String(v).replace(/"/g, '""')}"`;
+  const csv = "﻿" + ["username,text,created_at,is_reply,profile_pic_url", ...rows.map((r) => [r.username, r.text, r.created_at, r.is_reply, r.profile_pic_url].map(esc).join(","))].join("\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
+  a.download = `comments-${m[1]}.csv`;
+  document.body.appendChild(a); a.click(); a.remove();
+  say(`Έτοιμο ✓ ${rows.length} σχόλια κατέβηκαν στο comments-${m[1]}.csv. Άνοιξέ το στο picker.`);
+  setTimeout(() => box.remove(), 15000);
+})();
+</script>
 <script>
 (() => {
   const $ = (s) => document.querySelector(s);
@@ -442,11 +566,19 @@ Post`;
     const ui = cols.findIndex((c) => /user|όνομα|χρήστ|name|account/.test(c));
     const ti = cols.findIndex((c, i) => i !== ui && /text|comment|σχόλ|message|content/.test(c));
     if (ui < 0 || ti < 0) return null;
-    return lines.slice(1).map(splitLine).map((r) => ({ user: cleanUser(r[ui] || ""), text: r[ti] || "" })).filter((c) => USER_RE.test(c.user));
+    const tiI = cols.findIndex((c) => /created|time|date|ώρα|ημερ/.test(c));
+    const pi = cols.findIndex((c) => /pic|avatar|photo|image/.test(c));
+    const ri = cols.findIndex((c) => /reply|απάντ/.test(c));
+    return lines.slice(1).map(splitLine).map((r) => ({
+      user: cleanUser(r[ui] || ""), text: r[ti] || "",
+      time: tiI >= 0 && r[tiI] ? new Date(r[tiI]) : null,
+      pic: pi >= 0 ? r[pi] || "" : "",
+      reply: ri >= 0 ? /^(yes|true|1|ναι)$/i.test(r[ri] || "") : false,
+    })).filter((c) => USER_RE.test(c.user));
   }
 
   function parse(raw) {
-    const text = raw.replace(/[ ​‎‏]/g, " ");
+    const text = raw.replace(/^\uFEFF/, "").replace(/[ ​‎‏]/g, " ");
     const first = text.split(/\r?\n/).find((l) => l.trim()) || "";
     if (/(,|;|\t)/.test(first) && /(user|σχόλ|comment|text)/i.test(first)) {
       const csv = parseCSV(text);
@@ -503,6 +635,8 @@ Post`;
       uniqueTags: $("#uniqueTags").checked,
       nWinners: Math.max(1, parseInt($("#nWinners").value, 10) || 1),
       nAlt: Math.max(0, parseInt($("#nAlt").value, 10) || 0),
+      deadline: $("#deadline").value ? new Date($("#deadline").value) : null,
+      countReplies: $("#countReplies").checked,
     };
   }
 
@@ -522,6 +656,8 @@ Post`;
       }
       let status = "ok", reason = "Έγκυρο";
       if (c.user === r.host) { status = "bad"; reason = "Σελίδα"; }
+      else if (r.deadline && c.time && !isNaN(c.time) && c.time > r.deadline) { status = "bad"; reason = "Μετά τη λήξη"; }
+      else if (c.reply && !r.countReplies) { status = "bad"; reason = "Απάντηση"; }
       else if (r.black.has(c.user)) { status = "bad"; reason = "Αποκλεισμένος"; }
       else if (valid.length < r.minTags) {
         status = "bad";
@@ -616,7 +752,7 @@ Post`;
     const pick = avail[randInt(avail.length)];
     const wins = state.results.filter((x) => x.role === "win" && x.status !== "rejected").length;
     const role = wins < r.nWinners ? "win" : "alt";
-    const entry = { user: pick.user, text: pick.text, valid: pick.valid, role, status: "pending", follow: null, like: null, at: new Date(), total: avail.length };
+    const entry = { user: pick.user, text: pick.text, pic: pick.pic || "", valid: pick.valid, role, status: "pending", follow: null, like: null, at: new Date(), total: avail.length };
     state.usedUsers.add(pick.user);
     state.results.push(entry);
     state.current = entry;
@@ -652,7 +788,7 @@ Post`;
         <div class="ring"><button class="av" id="stageAv" type="button" aria-label="Προσθήκη φωτογραφίας προφίλ">${avatarHTML(w.user, 148)}</button></div>
         <p class="wname">@${esc(w.user)}</p>
         <div class="wcomment">${text || "<em>—</em>"}</div>
-        <p class="upload-hint" id="avHint" ${state.avatars[w.user] ? "hidden" : ""}>Για φωτογραφία: <a href="https://www.instagram.com/${encodeURIComponent(w.user)}/" target="_blank" rel="noopener">άνοιξε το προφίλ</a>, κάνε δεξί κλικ στη φωτογραφία → Αντιγραφή εικόνας και πάτα Ctrl/Cmd + V εδώ, ή <button type="button" id="avPick">ανέβασε αρχείο</button>.</p>
+        <p class="upload-hint" id="avHint" ${state.avatars[w.user] ? "hidden" : ""}>Για φωτογραφία: ${w.pic ? `<a href="${esc(w.pic)}" target="_blank" rel="noopener">άνοιξε τη φωτογραφία του</a>` : `<a href="https://www.instagram.com/${encodeURIComponent(w.user)}/" target="_blank" rel="noopener">άνοιξε το προφίλ</a>`}, κάνε δεξί κλικ στη φωτογραφία → Αντιγραφή εικόνας και πάτα Ctrl/Cmd + V εδώ, ή <button type="button" id="avPick">ανέβασε αρχείο</button>.</p>
       </div>
       <div class="verify">
         <div class="vrow"><div class="lbl">Tag φίλου<small>${w.valid.map((u) => "@" + esc(u)).join(", ")}</small></div><span class="auto">✓ Ελέγχθηκε</span></div>
@@ -1080,7 +1216,7 @@ Post`;
   let deb;
   const reEval = () => { clearTimeout(deb); deb = setTimeout(evaluate, 150); };
   $("#raw").addEventListener("input", () => { state.isSample = false; reEval(); });
-  ["#host", "#minTags", "#noSelf", "#uniqueTags", "#blacklist", "#nWinners", "#nAlt"].forEach((s) => $(s).addEventListener("input", reEval));
+  ["#host", "#minTags", "#noSelf", "#uniqueTags", "#blacklist", "#nWinners", "#nAlt", "#deadline", "#countReplies"].forEach((s) => $(s).addEventListener("input", reEval));
   $("#modeUser").onclick = () => { state.mode = "user"; $("#modeUser").setAttribute("aria-pressed", "true"); $("#modeComment").setAttribute("aria-pressed", "false"); evaluate(); };
   $("#modeComment").onclick = () => { state.mode = "comment"; $("#modeComment").setAttribute("aria-pressed", "true"); $("#modeUser").setAttribute("aria-pressed", "false"); evaluate(); };
   document.querySelectorAll(".tabs button").forEach((b) => b.onclick = () => {
@@ -1101,6 +1237,15 @@ Post`;
   $("#closeStage").onclick = closeStage;
   $("#copyResults").onclick = copyAnnouncement;
   $("#makeVideo").onclick = openStudio;
+  $("#copyScript").onclick = async () => {
+    const code = $("#igScript").textContent.trim();
+    try { await navigator.clipboard.writeText(code); toast("Το script αντιγράφηκε"); }
+    catch {
+      const ta = document.createElement("textarea"); ta.value = code; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); toast("Το script αντιγράφηκε"); } catch { toast("Η αντιγραφή απέτυχε"); }
+      ta.remove();
+    }
+  };
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
     if (!$("#studio").hidden) closeStudio(); else if (!$("#stage").hidden) closeStage();
